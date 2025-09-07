@@ -5,985 +5,310 @@ author: Zoo Team
 type: Meta
 status: Final
 created: 2024-12-20
+updated: 2025-01-07
 ---
 
 # ZIP-0: Zoo Ecosystem Architecture & Framework
 
 ## Abstract
 
-This document outlines the Zoo ecosystem architecture, development framework, and the Zoo Improvement Proposal (ZIP) process. It serves as the foundational reference for understanding Zoo's DeFi infrastructure, NFT marketplace, gaming ecosystem, and AI integration built on top of Lux Network.
+This document specifies the Zoo ecosystem architecture, development framework, and the Zoo Improvement Proposal (ZIP) process. It is the canonical reference for Zoo's Lux-based EVM L2 infrastructure, DeFi stack, NFT marketplace, GameFi, and AI integrations.
 
-## Zoo Ecosystem Overview
+## 1. Zoo Ecosystem Overview
 
-Zoo is a sovereign Layer 1 blockchain launched from Lux Network, specialized for DeFi, gaming, and AI-powered NFTs:
+Zoo is an EVM L2 appchain/rollup on Lux Network specialized for DeFi, gaming, and AI-powered NFTs, with an optional path to a sovereign L1 in the future:
 
-1. **Sovereign L1 Blockchain**: Independent validation and consensus
-2. **DeFi-Native Chain**: Optimized for financial protocols
-3. **AI-Powered NFTs**: User-owned AI models as tradeable assets
-4. **GameFi Platform**: Blockchain gaming with personalized AI agents
-5. **Metaverse Economy**: Virtual worlds with real value
-6. **Native Token**: ZOO for governance, fees, and rewards
+- **Lux EVM L2**: Low-latency execution, inherited security; PQC-ready per Lux roadmap
+- **DeFi-native**: First-class AMM, lending, vaults, liquid staking
+- **AI-powered NFTs**: User-owned models as dynamic, tradable assets
+- **GameFi**: On-chain games with personal AI agents
+- **Metaverse**: User-owned economies
+- **Native token**: ZOO for governance, gas/fees, and rewards
 
-### Sovereignty Architecture
+*Note: Architecture assumes Lux L2 today; if/when Zoo opts for a sovereign L1, consensus/bridging sections become active (see §2.3).*
 
+## 2. Sovereignty & Network Architecture
+
+### 2.1 Chain Type
+- **Primary**: EVM L2 (Lux) appchain/rollup
+- **Optional future**: Sovereign L1 via Lux Sovereign Chain Protocol (LP-25)
+
+### 2.2 L2 Characteristics (target)
 ```yaml
-Chain Type: Sovereign L1 (launched from Lux)
-Consensus: DeFi-optimized Proof of Liquidity (PoL)
-Block Time: 1 second
-Finality: Sub-second
-Validators: Liquidity providers and stakers
-Native Token: ZOO
-Launch Method: Lux Sovereign Chain Protocol (LP-25)
-Bridge: Native Lux-Zoo bridge for asset transfer
+Block time: ~1s
+Finality: sub-second (rollup confirmation subject to Lux settlement)
+Validators/Sequencers: Lux-aligned; PoL (Proof of Liquidity) semantics at L2 where applicable
+Bridge: Native Lux↔Zoo canonical bridge
 ```
 
-## Architecture Components
+### 2.3 Optional Sovereign L1 (deferred)
+```yaml
+Consensus: DeFi-optimized PoL
+Validators: Liquidity providers + stakers
+Bridge: Native Lux↔Zoo
+```
 
-### Core Infrastructure
+## 3. Architecture Components
 
 ```
 zoo/
-├── app/              # Main Zoo application (Next.js)
-├── core/             # Core application logic
-├── contracts/        # Smart contracts
+├── app/              # Next.js front-end
+├── core/             # Core logic
+├── contracts/        # Solidity (EVM)
 ├── sdk/              # TypeScript SDK
 ├── marketplace/      # NFT marketplace
-├── gamefi/           # Gaming infrastructure
+├── gamefi/           # Game infra
 └── ai/               # AI integration layer
 ```
 
-### Technology Stack
+**Stack**: Lux EVM, Solidity, Next.js/React/TS, Babylon.js/Unity SDK, Hanzo LLMs, IPFS/Arweave
 
-- **Blockchain**: Lux Network (with PQC security)
-- **Smart Contracts**: Solidity on C-Chain
-- **Frontend**: Next.js, React, TypeScript
-- **3D/Gaming**: Babylon.js, Unity SDK
-- **AI Models**: Hanzo LLMs (HLLMs)
-- **Storage**: IPFS, Arweave
+**PQC**: Leverage Lux PQC roadmap (e.g., ML-KEM/ML-DSA when available)
 
-### Hanzo Large Language Models (HLLMs) for Zoo
+## 4. Hamiltonian LLMs (HLLMs) for Zoo
 
-Zoo leverages specialized Hanzo LLMs optimized for blockchain applications:
 - **HLLM-DeFi**: Financial analysis and strategy
 - **HLLM-NFT**: Creative content generation
 - **HLLM-Game**: Game mechanics and NPC behavior
 - **HLLM-Gov**: Governance proposal analysis
 
-### Smart Contract Standards
+## 5. Smart Contract Standards
 
-- **ZRC-20**: Fungible token standard (based on LRC-20)
-- **ZRC-721**: NFT standard (based on LRC-721)
+- **ZRC-20**: Fungible token standard
+- **ZRC-721**: NFT standard
 - **ZRC-1155**: Multi-token standard
 - **ZRC-4626**: Tokenized vault standard
 - **ZRC-Gaming**: GameFi asset standard
 
-## ZIP Process
+## 6. ZIP Process
 
-### Proposal Lifecycle
+### Lifecycle
+Idea → Draft → Review → Last Call (14d) → Final → Superseded
 
-1. **Idea**: Community discussion in forums
-2. **Draft**: Formal proposal creation
-3. **Review**: Technical and community review
-4. **Last Call**: Final review period (14 days)
-5. **Final**: Accepted and ready for implementation
-6. **Superseded**: Replaced by newer proposal
-
-### Proposal Types
-
-- **Standards Track**: Technical specifications
-  - Core: Blockchain and infrastructure
-  - DeFi: Financial protocols
-  - Gaming: GameFi mechanics
-  - ZRC: Token standards
-- **Meta**: Process and governance
+### Types
+- **Standards Track**: Core / DeFi / Gaming / ZRC
+- **Meta**: Process & governance
 - **Informational**: Best practices
 
 ### Numbering Convention
+- 0-99: Core/governance
+- 100-199: DeFi protocols
+- 200-299: NFT/marketplace
+- 300-399: Gaming/metaverse
+- 400-499: AI integration
+- 500+: Application standards
 
-- **0-99**: Core infrastructure and governance
-- **100-199**: DeFi protocols
-- **200-299**: NFT and marketplace
-- **300-399**: Gaming and metaverse
-- **400-499**: AI integration
-- **500+**: Application standards
+## 7. Development Principles
 
-## Development Principles
+- **User-first**: Intuitive, mobile-first, seamless Web3
+- **AI-enhanced**: Recommendations, automation, adaptive gameplay
+- **Economic sustainability**: Balanced tokenomics, anti-inflation, fair distribution
+- **Security-by-default**: PQC-ready, multisig + timelocks, audits
 
-### User-First Design
-- Intuitive interfaces for all skill levels
-- Mobile-first approach
-- Seamless Web3 integration
+## 8. Ecosystem Components
 
-### AI-Enhanced Experience
-- AI-powered recommendations
-- Automated strategy optimization
-- Intelligent NPCs and game mechanics
+### 8.1 DeFi Suite
+- **Core**: ZooSwap (AMM), ZooLend, ZooVault (4626), ZooStake (LST)
+- **Advanced**: AI-assisted strategy, cross-chain liquidity, IL protection, flash-arb tools
 
-### Economic Sustainability
-- Balanced tokenomics
-- Anti-inflation mechanisms
-- Fair distribution models
-
-### Security by Default
-- Post-quantum cryptography via Lux
-- Multi-sig and time-locks
-- Comprehensive audits
-
-## Ecosystem Components
-
-### DeFi Suite
-
-#### Core Protocols
-- **ZooSwap**: Automated Market Maker (AMM)
-- **ZooLend**: Lending and borrowing
-- **ZooVault**: Yield optimization
-- **ZooStake**: Liquid staking
-
-#### Advanced Features
-- AI-powered yield farming strategies
-- Cross-chain liquidity aggregation
-- Impermanent loss protection
-- Flash loan arbitrage
-
-### NFT Marketplace
-
-#### Features
-- AI-generated art and metadata
-- Dynamic NFTs with evolving traits
-- Fractional ownership
+### 8.2 NFT Marketplace
+- AI-generated art/metadata
+- Dynamic traits
+- Fractionalization
 - NFT-backed loans
 
-#### Standards
-- ZRC-721 for unique assets
-- ZRC-1155 for gaming items
-- Royalty enforcement
-- Metadata standards
+### 8.3 GameFi
+- Play-to-Earn / Move-to-Earn / Learn-to-Earn / Create-to-Earn
+- AI NPCs, dynamic narrative, anti-cheat
 
-### GameFi Platform
+### 8.4 Metaverse
+- User land, avatars, social hubs, commerce
+- In-world economy
 
-#### Game Types
-- **Play-to-Earn**: Reward-based gaming
-- **Move-to-Earn**: Physical activity rewards
-- **Learn-to-Earn**: Educational gaming
-- **Create-to-Earn**: User-generated content
+## 9. Community Governance
 
-#### AI Integration
-- NPC behavior powered by HLLMs
-- Dynamic story generation
-- Personalized game difficulty
-- Anti-cheat mechanisms
-
-### Metaverse
-
-#### Virtual Worlds
-- User-owned land parcels
-- Customizable avatars
-- Social spaces
-- Virtual commerce
-
-#### Economic Systems
-- In-world currencies
-- Virtual real estate
-- Digital goods marketplace
-- Service economy
-
-## Community Governance
-
-### DAO Structure
-- **ZOO Token**: Governance token
-- **veZOO**: Vote-escrowed governance
+- **ZOO**: Governance token
+- **veZOO**: Vote-escrowed governance (optional)
 - **Proposals**: On-chain voting
-- **Treasury**: Community-controlled funds
+- **Treasury**: Community-directed (see §11)
 
-### Decision Making
-- Token-weighted voting
-- Quadratic voting for fairness
-- Time-locked proposals
-- Emergency procedures
+**Decision Mechanisms**: Token-weighted + optional quadratic; timelocks; emergency procedures
 
-### Incentive Alignment
-- Staking rewards
-- Proposal rewards
-- Active participation bonuses
-- Long-term lock incentives
+**Incentives**: Staking, proposer/reviewer rewards, participation bonuses, long-term locks
 
-## 501(c)(3) Non-Profit Legal Framework
+## 10. 501(c)(3) Non-Profit Legal Framework
 
-### Overview
-Zoo operates as a decentralized funding platform under a U.S. 501(c)(3) non-profit structure, combining DAO governance with legal compliance. This innovative model enables tax-deductible donations, legal clarity, and liability protection while maintaining decentralized decision-making.
+**Purpose**: Zoo operates zoo.fund as a decentralized funding platform under a U.S. 501(c)(3) wrapper. This enables tax-deductible donations, legal clarity, and liability protection while preserving decentralized decision-making (board retains limited compliance veto).
 
-### Legal Structure Options
+### 10.1 Structural Model (Primary)
 
-#### Primary Model: Non-Profit DAO
-The Zoo ecosystem operates under a 501(c)(3) corporation that:
-- Hosts the DAO platform as a charitable program
-- Maintains board oversight for legal compliance
-- Enables token-governed decision-making
-- Provides tax benefits to donors
+- **501(c)(3) Corporation** hosts the DAO platform as a charitable program; board oversees compliance and mission
+- **Token-governed decisions**: Community votes; board generally executes results unless a vote would violate law/mission (board retains discretion & control, an IRS expectation in fiscal sponsorship contexts)
+- **Sub-DAOs**: Treated as fiscally sponsored projects (Model A/C as appropriate)
 
-#### Key Legal Entities
-1. **501(c)(3) Corporation**: Legal wrapper for DAO operations
-2. **Fiscal Sponsorship**: Sub-DAOs as fiscally sponsored projects
-3. **Board Governance**: Fiduciary oversight with on-chain execution
-4. **Token Holders**: Advisory committee with governance rights
+### 10.2 Alternative/Sovereign Wrappers (Spin-Outs)
 
-### Token Compliance Framework
+A sub-DAO may "spin out" to its own wrapper:
+- **New 501(c)(3)** (after determination)
+- **Alternate fiscal sponsor** (Model C)
+- **Wyoming DUNA** (Decentralized Unincorporated Nonprofit Association), a nonprofit DAO legal structure enacted in 2024
 
-#### ZOO Token Legal Status
-```yaml
-Token Type: Governance/Utility (not security)
-Distribution: Airdrop and earned through participation
-Rights Granted:
-  - Voting on proposals
-  - Access to platform features
-  - No profit rights
-  - No equity ownership
-  - No dividend claims
-Regulatory Position: Non-investment charitable tool
-```
+**Spin-out mechanics**: Board resolution; Exit/Transfer Agreement moving restricted assets with charitable-use covenants; update Safe signers and on-chain pointers; publish exit hash for auditability. (Common in sponsorship exits.)
 
-#### KEEPER Token Structure
-```yaml
-Token Type: Donor governance token
-Acquisition: Charitable donation to treasury
-Rights Granted:
-  - Enhanced governance weight
-  - Project funding decisions
-  - Research direction input
-Tax Treatment: Donation receipt (not investment)
-Fair Market Value: De minimis (negligible)
-```
+### 10.3 Examples/Precedents (reference)
+- **Big Green DAO**: Nonprofit-led decentralized grantmaking
+- **Endaoment**: On-chain 501(c)(3) enabling crypto donations with high transparency
 
-### Board Governance Integration
+## 11. Treasury & Donation Flows
 
-#### Board Resolution Framework
+### 11.1 Donation Paths
+- **Using Zoo wrapper (tax-deductible)**: Funds flow to nonprofit-controlled wallets/Smart Treasury (project-restricted). Receipts issued by Zoo.
+- **Sovereign sub-DAO (no wrapper)**: Donations flow to the sub-DAO's treasury; no tax receipt from Zoo.
+
+### 11.2 Platform/Admin Fee
+Zoo may retain 5-10% of donations as an admin/platform fee for audits, compliance, infra—standard in fiscal sponsorships when disclosed. Implement split in contracts; disclose on receipts/UX.
+
+### 11.3 Yield & UBIT
+Staking/reward income is taxable income when received (Rev. Rul. 2023-14); for an exempt org may be UBIT if unrelated—consider a taxable subsidiary to house yield operations and upstream net to the nonprofit.
+
+## 12. Token Compliance Framework
+
+### 12.1 ZOO (Governance/Utility)
+- **Rights**: Vote, access features; no equity, dividends, or profit rights; not marketed as investment
+
+### 12.2 KEEPER (Donor Governance)
+- **Acquisition**: Issued upon charitable donation to Zoo treasury (project-restricted)
+- **Nature**: Non-transferable (soulbound) governance weight; no financial rights; intended FMV de minimis for receipt purposes (facts/circumstances control)
+- **Disclosure**: Receipts state that KEEPER has no monetary value and conveys only governance rights
+
+**Quid-pro-quo**: If a donor receives goods/services (e.g., a Beluga NFT), Zoo must provide a written disclosure when the payment exceeds $75, and the donor's deduction is reduced by the FMV of the premium. Keep KEEPER separate from premiums.
+
+## 13. NFTs, Premiums & Appraisals
+
+### 13.1 Beluga NFT (Donor Premium) Pattern
+- Donor gives (e.g., $10,000); receives Beluga NFT with FMV (e.g., $300) as a premium; KEEPER also issued (no FMV)
+- Receipt shows donation and FMV of NFT; deductible amount = donation − FMV; include standard quid-pro-quo disclosure (>$75 rule)
+- **Yield handling**: If Beluga NFT or associated position produces yield, route all yield to the nonprofit treasury (not to the donor) to avoid private benefit; plan for UBIT or use a taxable subsidiary for yield ops
+
+### 13.2 Donating Crypto/NFTs (as property)
+Crypto/NFT donations ≥ $5,000 require a qualified appraisal for donor deductions; exchange price alone does not replace an appraisal. (Attach Form 8283.)
+
+## 14. For-Profit vs. Non-Profit Recipients
+
+- **Non-profit recipients**: Standard grants aligned to mission
+- **For-profit recipients**: Allowed only via restricted charitable grants with open/public-benefit deliverables (e.g., open data, open-source, non-excludable conservation outputs), reporting, and clawbacks. No equity/returns to donors or Zoo—not investment placements.
+
+## 15. Board Governance Integration
+
+**Principle**: Community votes advise/drive execution; board retains a narrow compliance veto (law/mission/donor-restriction).
+
+### Policy Extract
+
+> The Board adopts on-chain advisory voting for program funds. The Board retains discretion to decline any voted action that would violate law, Articles, charitable purpose, or donor restrictions. Otherwise, the organization executes voted actions as-is.
+
+### On-chain Hooks (pseudocode)
+
 ```solidity
 contract BoardGovernance {
-    // Board retains veto for compliance
-    mapping(uint256 => bool) public boardVetoed;
-    
-    // Board sets mission boundaries
-    string[] public approvedMissionAreas = [
-        "Wildlife Conservation",
-        "Ocean Research", 
-        "Open Science",
-        "Environmental Protection"
-    ];
-    
-    function executeProposal(uint256 proposalId) external {
-        require(!boardVetoed[proposalId], "Board veto");
-        require(withinMission(proposalId), "Outside mission");
-        
-        // Execute on-chain decision
-        _execute(proposalId);
+    mapping(uint256 => bool) public vetoed;
+
+    function recordVoteResult(uint256 proposalId, bytes calldata decisionHash) external {
+        // store decision and timestamp (off-chain system later executes)
+    }
+
+    function veto(uint256 proposalId, string calldata reason) external /* onlyBoard */ {
+        vetoed[proposalId] = true;
     }
 }
 ```
 
-#### Oversight Mechanisms
-1. **Mission Alignment**: Board ensures all activities further charitable purpose
-2. **Legal Veto**: Emergency powers for compliance issues
-3. **Impartial Arbitration**: Board acts as neutral arbiter for disputes
-4. **Fiduciary Duty**: Directors maintain legal responsibility
+## 16. Treasury Management (contracts & ops)
 
-### Treasury Management
+### Smart Treasury (nonprofit-controlled)
 
-#### Non-Profit Treasury Structure
 ```solidity
 contract NonProfitTreasury {
-    // All funds are charitable assets
-    address public nonprofitMultisig;
-    
-    // Restricted funds for specific projects
-    mapping(bytes32 => uint256) public projectFunds;
-    
-    // Administrative fee for operations (5-15%)
-    uint256 public adminFeePercent = 5;
-    
+    address public nonprofitSafe; // Gnosis Safe controlled by nonprofit
+    uint16  public adminFeeBps = 500; // 5%, configurable
+
+    event Donation(address indexed donor, uint256 amount, bytes32 projectId);
+    event KeeperIssued(address indexed donor, uint256 amount, bytes32 projectId);
+
     function donate(bytes32 projectId) external payable {
-        uint256 adminFee = msg.value * adminFeePercent / 100;
-        uint256 projectAmount = msg.value - adminFee;
-        
-        // Route to project
-        projectFunds[projectId] += projectAmount;
-        
-        // Admin fee to operations
-        operatingFunds += adminFee;
-        
-        // Issue KEEPER tokens
-        _mintKeeperTokens(msg.sender, msg.value);
-        
-        // Tax receipt event
-        emit CharitableDonation(msg.sender, msg.value, block.timestamp);
+        uint256 fee = (msg.value * adminFeeBps) / 10_000;
+        uint256 net = msg.value - fee;
+        // forward to nonprofit Safe with project memo
+        // issue KEEPER via separate token contract (non-transferable)
+        emit Donation(msg.sender, msg.value, projectId);
+        emit KeeperIssued(msg.sender, msg.value, projectId);
     }
 }
 ```
 
-#### Fund Management Requirements
-- **Charitable Use Only**: All funds must further 501(c)(3) purposes
-- **Donor Intent**: Respect restricted fund designations
-- **Grant Agreements**: Formalize terms with recipients
-- **Expenditure Responsibility**: Due diligence for non-501(c)(3) grants
-- **Financial Reporting**: Form 990 compliance
+**Compliance note**: Dollar thresholds (e.g., $75, $5,000) and receipt math are handled off-chain in the receipt service referencing current IRS guidance (Pub. 1771, Form 8283, etc.).
 
-### Regulatory Compliance
+## 17. Sub-DAO Sovereignty Model
 
-#### Securities Law Compliance
-- **Not Securities**: Tokens grant governance, not profit expectations
-- **No Investment Marketing**: Emphasize charitable purpose
-- **Clear Disclaimers**: Tokens are tools, not investments
-- **Soul-bound Option**: Consider non-transferable tokens
+### 17.1 Launch (using Zoo wrapper)
+- Safe per sub-DAO (nonprofit signers included for custody of charitable assets)
+- Donation router splits X% to project, Y% to Zoo ops; issues tax receipt + KEEPER
+- Governance: sub-DAO votes; nonprofit executes unless veto for compliance
 
-#### Tax Compliance
-```yaml
-Donor Benefits:
-  - Tax-deductible contributions
-  - Charitable receipts provided
-  - Form 8283 for large crypto donations
-  
-Reporting Requirements:
-  - Form 990 annual filing
-  - Crypto valued at donation time
-  - Grant tracking and reporting
-  - International grant compliance
-```
+### 17.2 Exit / Spin-out
+- Sub-DAO forms successor wrapper (its own 501(c)(3), another sponsor, or Wyoming DUNA)
+- Exit/Transfer: move restricted balance with charitable-use covenants; update dApp pointers; publish on-chain exit hash
 
-#### Sub-DAO Tax Treatment
-```yaml
-Sub-DAO Donations:
-  Status: Fully tax-deductible if:
-    - Sub-DAO is fiscally sponsored by 501(c)(3)
-    - Funds go to nonprofit's wallet/contract
-    - Used for charitable purposes
-    - Proper documentation provided
-    
-NFT Donations:
-  Deduction Amount: Fair Market Value (FMV) at donation time
-  Requirements:
-    - Held > 1 year: Full FMV deduction
-    - Held < 1 year: Lesser of cost basis or FMV
-    - Appraisal needed if FMV > $5,000
-    - Form 8283 for non-cash contributions
-    
-Quid Pro Quo Rules:
-  - If donor receives something in return
-  - Must reduce deduction by value received
-  - Exception: De minimis benefits (< $75 or 2% of donation)
-```
+### 17.3 Fully Sovereign (no wrapper)
+- Donations go directly to sub-DAO Safe; no Zoo receipts; Zoo does not control funds
+- Optional listing on zoo.fund (infra only; no tax advantage)
 
-##### Sub-DAO Donation Examples
-```solidity
-contract SubDAOTaxCompliance {
-    // Each sub-DAO is a restricted fund of the 501(c)(3)
-    mapping(bytes32 => SubDAO) public subDAOs;
-    
-    struct SubDAO {
-        string project;  // "Ocean DNA Sequencing"
-        address treasury;  // Controlled by nonprofit
-        uint256 raised;
-        bool isActive;
-    }
-    
-    function donateToSubDAO(bytes32 subDAOId) external payable {
-        // Donation goes to nonprofit-controlled address
-        SubDAO storage dao = subDAOs[subDAOId];
-        
-        // Record for tax purposes
-        emit TaxDeductibleDonation(
-            msg.sender,
-            msg.value,
-            subDAOId,
-            dao.project,
-            block.timestamp
-        );
-        
-        // Issue tax receipt
-        _issueTaxReceipt(msg.sender, msg.value, dao.project);
-        
-        // Grant KEEPER tokens (de minimis value)
-        _mintKeeperTokens(msg.sender, msg.value);
-    }
-}
-```
+## 18. Compliance & Risk (operational checklist)
 
-##### NFT Donation Handling
-```solidity
-contract NFTDonationProcessor {
-    // Track NFT donations for tax reporting
-    struct NFTDonation {
-        address donor;
-        address nftContract;
-        uint256 tokenId;
-        uint256 fairMarketValue;
-        uint256 holdingPeriod;
-        bool hasAppraisal;
-        uint256 donationDate;
-    }
-    
-    function donateNFT(
-        address nftContract,
-        uint256 tokenId,
-        uint256 declaredValue
-    ) external {
-        // Transfer NFT to nonprofit
-        IERC721(nftContract).transferFrom(
-            msg.sender,
-            address(this),
-            tokenId
-        );
-        
-        // Determine deduction amount
-        uint256 deductibleAmount;
-        uint256 holdingPeriod = getHoldingPeriod(msg.sender, nftContract, tokenId);
-        
-        if (holdingPeriod > 365 days) {
-            // Long-term: Full FMV deductible
-            deductibleAmount = declaredValue;
-            
-            if (declaredValue > 5000 ether) {
-                // Require qualified appraisal
-                require(hasQualifiedAppraisal(nftContract, tokenId), 
-                       "Appraisal required for >$5000");
-            }
-        } else {
-            // Short-term: Lesser of cost basis or FMV
-            uint256 costBasis = getCostBasis(msg.sender, nftContract, tokenId);
-            deductibleAmount = min(costBasis, declaredValue);
-        }
-        
-        // Issue tax documentation
-        _generateForm8283(msg.sender, nftContract, tokenId, deductibleAmount);
-        
-        // No KEEPER tokens for NFT donations 
-        // (to avoid quid pro quo issues)
-    }
-}
-```
+- **Quid-pro-quo (> $75)**: Written disclosure to donors when they receive premiums; reduce deduction by FMV
+- **Qualified appraisal (> $5k crypto/NFT)**: Required for donor deduction (Form 8283)
+- **Staking/yield**: Taxable when received (Rev. Rul. 2023-14); consider taxable subsidiary for yield ops
+- **Charitable solicitation (web)**: Follow Charleston Principles; expect multistate registration for nationwide wallet-connect fundraising
+- **AML/sanctions**: Screen large/flagged addresses; reserve right to reject/refund
+- **Conflicts**: Apply COI policy; board recusal where insiders are implicated
+- **Transparency**: Publish treasury addresses, grant agreements, and vote outcomes (Endaoment/Big Green show benefits)
 
-##### Quid Pro Quo Calculations
-```solidity
-contract QuidProQuoCompliance {
-    uint256 constant DE_MINIMIS_THRESHOLD = 75 ether; // $75
-    uint256 constant DE_MINIMIS_PERCENT = 200; // 2%
-    
-    struct DonationBenefit {
-        uint256 donationAmount;
-        uint256 benefitValue;
-        string benefitDescription;
-    }
-    
-    function calculateDeductibleAmount(
-        uint256 donationAmount,
-        uint256 benefitValue,
-        string memory benefitType
-    ) public pure returns (uint256 deductible, string memory receipt) {
-        // Check if benefit is de minimis
-        bool isDeminimis = (
-            benefitValue <= DE_MINIMIS_THRESHOLD ||
-            benefitValue <= (donationAmount * DE_MINIMIS_PERCENT / 10000)
-        );
-        
-        if (isDeminimis) {
-            // Full donation is deductible
-            deductible = donationAmount;
-            receipt = "Full amount deductible. De minimis benefit received.";
-        } else if (keccak256(bytes(benefitType)) == keccak256("KEEPER_TOKEN")) {
-            // KEEPER tokens have no established FMV
-            deductible = donationAmount;
-            receipt = "Full amount deductible. Governance token has no monetary value.";
-        } else if (keccak256(bytes(benefitType)) == keccak256("AI_MODEL_ACCESS")) {
-            // Access to AI model might have value
-            deductible = donationAmount - benefitValue;
-            receipt = string(abi.encodePacked(
-                "Deductible: $", uint2str(deductible),
-                " (Donation: $", uint2str(donationAmount),
-                " minus benefit value: $", uint2str(benefitValue), ")"
-            ));
-        } else {
-            // Standard quid pro quo
-            deductible = donationAmount - benefitValue;
-            receipt = string(abi.encodePacked(
-                "Deductible amount: $", uint2str(deductible)
-            ));
-        }
-        
-        return (deductible, receipt);
-    }
-}
-```
+## 19. Security Architecture
 
-##### Tax Receipt Generation
-```solidity
-contract TaxReceiptSystem {
-    struct TaxReceipt {
-        address donor;
-        uint256 cashDonation;
-        uint256 nftValue;
-        uint256 totalDeductible;
-        uint256 benefitsReceived;
-        uint256 taxYear;
-        string orgEIN;  // "12-3456789"
-        bytes signature; // Nonprofit's digital signature
-    }
-    
-    function generateAnnualTaxReceipt(address donor) external view returns (TaxReceipt memory) {
-        uint256 taxYear = getCurrentTaxYear();
-        
-        // Aggregate all donations for the year
-        uint256 cashTotal = getCashDonations(donor, taxYear);
-        uint256 nftTotal = getNFTDonations(donor, taxYear);
-        uint256 benefits = getBenefitsReceived(donor, taxYear);
-        
-        // Calculate deductible amount
-        uint256 deductible = cashTotal + nftTotal;
-        
-        // Reduce by non-de-minimis benefits
-        if (benefits > DE_MINIMIS_THRESHOLD) {
-            deductible -= benefits;
-        }
-        
-        return TaxReceipt({
-            donor: donor,
-            cashDonation: cashTotal,
-            nftValue: nftTotal,
-            totalDeductible: deductible,
-            benefitsReceived: benefits,
-            taxYear: taxYear,
-            orgEIN: "12-3456789",
-            signature: generateDigitalSignature()
-        });
-    }
-}
+- **Smart contracts**: Multisig, timelocks, upgrade gates, emergency pause
+- **PQC**: Track Lux PQC rollout; adopt ML-KEM/ML-DSA endpoints when ready
+- **Economic**: Anti-manipulation, oracle redundancy, slashing, insurance funds
 
-### Decentralized Sub-DAO Sovereignty Model
+## 20. Implementation Requirements
 
-#### Zoo.fund Platform Architecture
+**ZIP authors**: Problem, economic impact, security, timeline, community benefit
 
-Zoo.fund serves as a launching platform where sub-DAOs achieve full sovereignty while Zoo provides the legal wrapper:
+**Developers**: Spec adherence, tests, gas optimization, audit readiness
 
-```yaml
-Platform Model:
-  Zoo.fund Role:
-    - Provides 501(c)(3) corporate wrapper
-    - Handles tax compliance and receipts
-    - Takes platform fee (5-10%)
-    - Offers legal protection
-    
-  Sub-DAO Sovereignty:
-    - Fully decentralized governance
-    - Own Safe multisig treasury
-    - Independent token economics
-    - Complete operational autonomy
-    - Can exit Zoo wrapper anytime
-```
+## 21. Roadmap (2025)
 
-#### Sub-DAO Launch Process
+- **Q1**: HLLM integration; AI-optimized AMM; NFT marketplace v2
+- **Q2**: GameFi beta; cross-chain bridge; mobile app
+- **Q3**: Metaverse alpha; advanced DeFi strategies; DAO v2
+- **Q4**: Full integration; enterprise partners; global expansion
 
-```solidity
-contract ZooFundPlatform {
-    struct SubDAO {
-        string name;              // "Hanzo Network DAO"
-        address safeMultisig;     // Gnosis Safe address
-        address governanceToken;  // Sub-DAO's token
-        uint256 platformFee;      // Zoo's fee percentage
-        bool isSovereign;         // Full autonomy flag
-        bool usesWrapper;         // Using Zoo's legal wrapper
-    }
-    
-    mapping(bytes32 => SubDAO) public subDAOs;
-    uint256 constant PLATFORM_FEE = 500; // 5%
-    
-    function launchSovereignDAO(
-        string memory name,
-        address safeMultisig,
-        address governanceToken
-    ) external returns (bytes32 daoId) {
-        daoId = keccak256(abi.encodePacked(name, block.timestamp));
-        
-        // Deploy completely sovereign infrastructure
-        subDAOs[daoId] = SubDAO({
-            name: name,
-            safeMultisig: safeMultisig,
-            governanceToken: governanceToken,
-            platformFee: PLATFORM_FEE,
-            isSovereign: true,
-            usesWrapper: true
-        });
-        
-        emit SovereignDAOLaunched(daoId, name, safeMultisig);
-    }
-    
-    function processDonation(bytes32 daoId) external payable {
-        SubDAO storage dao = subDAOs[daoId];
-        require(dao.isSovereign, "Not sovereign");
-        
-        // Zoo takes platform fee
-        uint256 fee = msg.value * dao.platformFee / 10000;
-        uint256 daoAmount = msg.value - fee;
-        
-        // Transfer to sub-DAO's Safe multisig
-        payable(dao.safeMultisig).transfer(daoAmount);
-        
-        // Platform fee to Zoo treasury
-        payable(zooTreasury).transfer(fee);
-        
-        // Issue tax receipt (if using wrapper)
-        if (dao.usesWrapper) {
-            _issueTaxReceipt(msg.sender, msg.value);
-        }
-        
-        emit DonationProcessed(daoId, msg.sender, msg.value, fee);
-    }
-}
-```
+## 22. References
 
-#### Example: Hanzo Network DAO
+1. **IRS Pub 1771** – Substantiation & disclosure (quid-pro-quo) and receipts
+2. **IRS CCA 202302012** – Qualified appraisal required for crypto donations > $5k
+3. **Rev. Rul. 2023-14** – Staking rewards taxable when donor has dominion/control
+4. **Charleston Principles** – Internet charitable solicitation guidance
+5. **Fiscal sponsorship models (Model A/C)** – Nonprofit Law Blog (Takagi/NEO)
+6. **Wyoming DUNA** – 2024 legislation enabling decentralized nonprofit DAOs
+7. **Endaoment / Big Green DAO** – On-chain nonprofit & decentralized grantmaking precedent
+8. [Zoo Documentation](https://docs.zoo.ai)
+9. [Lux Network](https://lux.network)
+10. [Hanzo AI](https://hanzo.ai)
 
-```typescript
-class HanzoNetworkDAO {
-    // Completely sovereign entity
-    constructor() {
-        this.safe = new GnosisSafe({
-            owners: ["0x...", "0x...", "0x..."],
-            threshold: 2
-        });
-        
-        this.token = new GovernanceToken({
-            name: "Hanzo Network",
-            symbol: "HANZO",
-            supply: 1_000_000_000
-        });
-        
-        this.governance = new OnChainGovernance({
-            token: this.token,
-            quorum: 100_000,
-            votingPeriod: 7 * 24 * 60 * 60 // 7 days
-        });
-    }
-    
-    async registerWithZoo() {
-        // Register for legal wrapper benefits
-        await zooFund.launchSovereignDAO({
-            name: "Hanzo Network DAO",
-            safeMultisig: this.safe.address,
-            governanceToken: this.token.address
-        });
-        
-        // Now can receive tax-deductible donations
-        // But maintains complete sovereignty
-    }
-    
-    async exitZooWrapper() {
-        // Can leave Zoo's legal wrapper anytime
-        // Continues operating as independent entity
-        await zooFund.removeLegalWrapper(this.daoId);
-        
-        // Now fully independent
-        // No longer tax-deductible
-        // Complete sovereignty maintained
-    }
-}
-```
+## 23. Implementation Notes
 
-#### Platform Benefits for Sub-DAOs
+1. **Receipts & thresholds**: Keep all IRS dollar thresholds (e.g., $75 quid-pro-quo disclosure; appraisal thresholds) out of chain code. Resolve them in a Receipt Service that references current IRS publications at runtime.
 
-```yaml
-Using Zoo.fund Wrapper:
-  Legal Benefits:
-    - 501(c)(3) tax deductions for donors
-    - Limited liability protection
-    - Regulatory compliance handled
-    - Banking relationships
-    
-  Operational Benefits:
-    - No legal entity setup required
-    - Instant launch capability
-    - Shared infrastructure costs
-    - Network effects from platform
-    
-  Sovereignty Maintained:
-    - Own treasury control (Safe multisig)
-    - Independent governance decisions
-    - Custom token economics
-    - Exit rights preserved
-    
-  Platform Fee Structure:
-    - 5% on donations (for tax-deductible)
-    - 2% on non-deductible contributions
-    - 0% on inter-DAO transfers
-    - Volume discounts available
-```
-
-#### For-Profit Sub-DAOs on Zoo.fund
-
-```solidity
-contract ForProfitSubDAO {
-    // For-profit entities can also use platform
-    struct ForProfitDAO {
-        string name;
-        address treasury;
-        bool isForProfit;
-        uint256 platformFee; // Lower fee, no tax benefits
-    }
-    
-    function launchForProfitDAO(
-        string memory name,
-        address treasury
-    ) external returns (bytes32) {
-        bytes32 daoId = keccak256(abi.encodePacked(name, msg.sender));
-        
-        forProfitDAOs[daoId] = ForProfitDAO({
-            name: name,
-            treasury: treasury,
-            isForProfit: true,
-            platformFee: 200 // 2% only
-        });
-        
-        // No tax deduction capability
-        // But gets platform infrastructure
-        emit ForProfitDAOLaunched(daoId, name);
-        
-        return daoId;
-    }
-}
-```
-
-#### Migration Paths
-
-```yaml
-Sub-DAO Evolution Options:
-  
-  Start Nonprofit → Stay Nonprofit:
-    - Begin under Zoo 501(c)(3)
-    - Grow with tax benefits
-    - Eventually file own 501(c)(3)
-    - Maintain charitable mission
-    
-  Start Nonprofit → Convert to For-Profit:
-    - Begin with donations
-    - Build community and product
-    - Repay restricted funds
-    - Convert to revenue model
-    
-  Start For-Profit → Stay For-Profit:
-    - Use platform infrastructure
-    - No tax benefits
-    - Lower platform fees
-    - Full commercial freedom
-    
-  Hybrid Model:
-    - Nonprofit arm for research
-    - For-profit arm for products
-    - Shared governance possible
-    - Both use Zoo platform
-```
-
-#### Technical Implementation
-
-```solidity
-contract DecentralizedSubDAOPlatform {
-    // Each sub-DAO is fully sovereign
-    mapping(bytes32 => bool) public sovereignDAOs;
-    mapping(bytes32 => address) public daoTreasuries;
-    mapping(bytes32 => uint256) public platformFees;
-    
-    // Zoo only provides wrapper, not control
-    modifier onlyDAOGovernance(bytes32 daoId) {
-        require(
-            IGovernance(getGovernance(daoId)).hasRole(msg.sender, "EXECUTOR"),
-            "Not authorized by DAO governance"
-        );
-        _;
-    }
-    
-    function executeDAODecision(
-        bytes32 daoId,
-        address target,
-        bytes calldata data
-    ) external onlyDAOGovernance(daoId) {
-        // DAO makes all its own decisions
-        // Zoo has no veto power over operations
-        (bool success,) = target.call(data);
-        require(success, "Execution failed");
-    }
-    
-    function withdrawFromTreasury(
-        bytes32 daoId,
-        uint256 amount,
-        address recipient
-    ) external onlyDAOGovernance(daoId) {
-        // DAO controls its own funds completely
-        ISafe(daoTreasuries[daoId]).execTransaction(
-            recipient,
-            amount,
-            "",
-            ISafe.Operation.Call
-        );
-    }
-}
-```
-
-#### Anti-Money Laundering
-- **Sanctions Screening**: Check wallet addresses
-- **Large Donor Vetting**: Enhanced due diligence
-- **Suspicious Activity**: Flag and report
-- **Refund Capability**: Return problematic donations
-
-### Risk Mitigation
-
-#### Legal Protections
-1. **Limited Liability**: 501(c)(3) shields participants
-2. **Directors Insurance**: D&O coverage for board
-3. **Clear Documentation**: Terms of use and policies
-4. **Conflict of Interest**: Policies and recusal procedures
-
-#### Operational Safeguards
-```solidity
-contract SafeguardedDAO {
-    // Prevent governance capture
-    uint256 public constant MAX_VOTING_POWER = 10000; // 1% cap
-    
-    // Quadratic voting for fairness
-    function getVotingPower(address voter) public view returns (uint256) {
-        uint256 tokens = balanceOf(voter);
-        return sqrt(min(tokens, MAX_VOTING_POWER));
-    }
-    
-    // Time-locked execution
-    uint256 public constant EXECUTION_DELAY = 2 days;
-    
-    // Emergency pause
-    bool public paused;
-    modifier whenNotPaused() {
-        require(!paused, "Paused");
-        _;
-    }
-}
-```
-
-### Implementation Roadmap
-
-#### Phase 1: Legal Foundation
-- Board resolution adopting DAO program
-- Update bylaws for on-chain governance
-- Establish multisig wallets
-- Draft terms of use
-
-#### Phase 2: Token Launch
-- Deploy governance tokens
-- Implement donation mechanisms
-- Set up tax receipt system
-- Launch initial projects
-
-#### Phase 3: Operations
-- Process on-chain votes
-- Execute grants to projects
-- Maintain compliance records
-- Report to stakeholders
-
-#### Phase 4: Scale
-- International grant procedures
-- Cross-chain integration
-- Enhanced governance tools
-- Template for other nonprofits
-
-### Best Practices
-
-#### Documentation Requirements
-- **Mission Statement**: Clear charitable purpose
-- **Governance Charter**: Token holder rights and limits
-- **Grant Guidelines**: Funding criteria and process
-- **Conflict Policy**: Handling conflicts of interest
-- **Investment Policy**: Treasury management rules
-
-#### Transparency Measures
-- **On-Chain Records**: All transactions visible
-- **Public Reporting**: Regular impact reports
-- **Open Governance**: Public proposal discussions
-- **Audit Trail**: Complete donation tracking
-
-### Legal Precedents
-
-#### Successful Non-Profit DAOs
-1. **Endaoment**: Fully on-chain 501(c)(3) for crypto donations
-2. **Big Green DAO**: Food/gardening charity with DAO governance
-3. **Regen Network**: Hybrid structure for ecological goals
-4. **ConstitutionDAO**: Partnered with 501(c)(3) fiscal sponsor
-
-### Conclusion
-
-Zoo's 501(c)(3) non-profit DAO structure enables:
-- **Legal Compliance**: Full regulatory adherence
-- **Tax Benefits**: Deductible donations
-- **Decentralized Governance**: Community decision-making
-- **Mission Focus**: Wildlife and ocean conservation
-- **Innovation**: Template for charitable DAOs
-
-This framework positions Zoo as a pioneer in decentralized philanthropy, combining blockchain innovation with traditional nonprofit benefits to maximize impact for conservation and research.
-
-## Security Architecture
-
-### Smart Contract Security
-- Multi-signature requirements
-- Time-locks on critical functions
-- Upgradeable proxy patterns
-- Emergency pause mechanisms
-
-### Post-Quantum Security
-- Inherited from Lux Network
-- ML-KEM for key exchange
-- ML-DSA for signatures
-- Quantum-resistant wallets
-
-### Economic Security
-- Anti-manipulation mechanisms
-- Oracle redundancy
-- Slashing for bad actors
-- Insurance funds
-
-## Implementation Requirements
-
-### For ZIP Authors
-1. Clear problem statement
-2. Economic impact analysis
-3. Security considerations
-4. Implementation timeline
-5. Community benefit analysis
-
-### For Developers
-1. Follow ZIP specifications
-2. Comprehensive testing
-3. Gas optimization
-4. Audit readiness
-
-## Future Roadmap
-
-### Q1 2025
-- HLLM integration launch
-- Enhanced AMM with AI optimization
-- NFT marketplace v2
-
-### Q2 2025
-- GameFi platform beta
-- Cross-chain bridge expansion
-- Mobile app launch
-
-### Q3 2025
-- Metaverse alpha
-- Advanced DeFi strategies
-- DAO v2 governance
-
-### Q4 2025
-- Full ecosystem integration
-- Enterprise partnerships
-- Global expansion
-
-## References
-
-1. [Zoo Documentation](https://docs.zoo.ai)
-2. [Lux Network](https://lux.network)
-3. [Hanzo AI](https://hanzo.ai)
-4. [DeFi Pulse](https://defipulse.com)
+2. **Yield ops**: If you proceed with yield strategies, set up a taxable C-corp subsidiary now so accounting/UBIT is clean when volumes grow (standard nonprofit pattern).
 
 ## Copyright
 

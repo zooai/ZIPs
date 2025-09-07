@@ -1,6 +1,6 @@
 ---
 zip: 1
-title: Hanzo Large Language Models (HLLMs) for Zoo
+title: Hamiltonian Large Language Models (HLLMs) for Zoo
 author: Zoo Team
 type: Standards Track
 category: Core
@@ -13,7 +13,7 @@ requires: HIP-1
 
 ## Abstract
 
-This proposal defines Zoo's integration with Hanzo's per-user AI models and establishes the ZOO token economics. Instead of domain-specific models, every Zoo user gets a personalized AI that learns from their DeFi strategies, gaming behavior, and NFT preferences. The ZOO token powers this AI-enhanced ecosystem through training rewards, compute payments, and governance.
+This proposal defines Zoo's integration with Hamiltonian Large Language Models (HLLMs) per-user AI models and establishes the ZOO token economics. Instead of domain-specific models, every Zoo user gets a personalized AI that learns from their DeFi strategies, gaming behavior, and NFT preferences. The ZOO token powers this AI-enhanced ecosystem through training rewards, compute payments, and governance.
 
 ## Motivation
 
@@ -35,7 +35,7 @@ Every Zoo user gets a personalized fork of Hanzo's base model:
 
 ```python
 class ZooUserModel:
-    base_model = "HMM-32B"  # Hanzo Multimodal Model
+    base_model = "HLLM-32B"  # Hamiltonian Large Language Model
     
     def __init__(self, user_address):
         # Every user gets unique model
