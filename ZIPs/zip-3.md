@@ -17,7 +17,7 @@ license: CC-BY-4.0
 
 We present **Eco-1**, a hyper-modal learning stack whose core is **z-JEPA**: Zoo's Joint Embedding Predictive Architecture that learns world-state dynamics in latent space across video, audio, text, and 3D. Eco-1 composes:
 1. A video backbone scaled to large datasets with native LLM alignment for video QA and instruction following
-2. A **HLLM** (Hamiltonian Large Language Model) control plane that governs routing, precision, and reasoning depth under latency/compute budgets
+2. A **HLLM** (Hamiltonian Large Language Model) that governs routing, precision, and reasoning depth under latency/compute budgets
 3. A planning prior derived from Expected Free Energy (EFE), which unifies goal pursuit with epistemic exploration
 
 To reach interactive latency for humanoid robotics and metaverse avatars, we employ sparsely activated MoE transformers with modern inference optimizations. For per-user, multi-tenant personalization, we standardize on **BitDelta** 1-bit delta-weight finetunes with optional low-rank adapters. We outline optional ZKML proof-of-inference paths and interoperability via the Model Context Protocol (MCP) and IEEE 2874 Spatial Web.
@@ -44,7 +44,7 @@ Zoo's proprietary Joint Embedding Predictive Architecture featuring:
 - **LLM alignment**: Direct integration with language models for instruction following
 - **Latent world modeling**: Learning dynamics in representation space, avoiding pixel reconstruction
 
-### 2. HLLM Control Plane (Hamiltonian LLM)
+### 2. HLLM (Hamiltonian Large Language Model)
 Resource-aware orchestration with:
 - **Thinking/non-thinking modes**: Controllable deliberation depth
 - **Hamiltonian dynamics**: Energy-conserving routing with dual variables
@@ -402,7 +402,7 @@ This provides principled exploration following Champion et al. (2024) and de Vri
 - **3D JEPA**: Point cloud masked latent prediction
 - **Cross-Modal Heads**: Multi-directional prediction (video→text, audio→video)
 
-#### (B) HLLM Control Plane
+#### (B) HLLM
 ```python
 class HamiltonianController:
     """Resource-constrained routing with dual variables"""
