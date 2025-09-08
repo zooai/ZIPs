@@ -1,19 +1,26 @@
 ---
 zip: 3
-title: Eco-1 Model Architecture - MoE with v-JEPA for Metaverse Animal Behaviors
-author: Zoo Team
+title: "Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-Inference Aligned Architecture (Qwen3 ⊕ V-JEPA 2)"
+author: Zoo Research Group, Z, Collaborators - Zoo Labs Foundation Inc. (Delaware 501(c)(3))
 type: Standards Track
 category: Core
 status: Draft
 created: 2024-12-20
+updated: 2025-01-09
 requires: ZIP-1, HIP-1, HIP-7
+license: CC-BY-4.0
 ---
 
-# ZIP-3: Eco-1 Model Architecture - MoE with v-JEPA for Metaverse Animal Behaviors
+# ZIP-3: Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-Inference Aligned Architecture (Qwen3 ⊕ V-JEPA 2)
 
 ## Abstract
 
-This proposal defines Eco-1, Zoo's native foundation model that combines Qwen3's Mixture of Experts (MoE) architecture with Meta's v-JEPA (Video Joint-Embedding Predictive Architecture) to learn from virtualized animal behaviors in the metaverse. The Eco-1-32B model creates emergent AI behaviors by observing and predicting animal movement patterns, social dynamics, and environmental interactions in virtual worlds.
+We present **Eco-1**, a hyper-modal learning stack whose core is **z-JEPA**: a Joint Embedding Predictive Architecture that learns world-state dynamics in latent space across video, audio, text, and 3D. Eco-1 composes:
+1. A V-JEPA-style video backbone scaled to large datasets and explicitly aligned with an LLM for video QA and instruction following
+2. A **HLLM** (Hamiltonian Large Language Model) control plane based on Qwen3 that governs routing, precision, and reasoning depth under latency/compute budgets
+3. A planning prior derived from Expected Free Energy (EFE), which unifies goal pursuit with epistemic exploration
+
+To reach interactive latency for humanoid robotics and metaverse avatars, we couple sparsely activated MoE transformers with modern inference optimizations. For per-user, multi-tenant personalization, we standardize on **BitDelta** 1-bit delta-weight finetunes, optionally combined with LoRA/QLoRA adapters. We outline optional ZKML proof-of-inference paths and interoperability via the Model Context Protocol (MCP) and IEEE 2874 Spatial Web.
 
 ## Motivation
 
@@ -26,6 +33,48 @@ Current AI models lack understanding of natural movement and social behaviors:
 5. **No Emergence**: Scripted behaviors rather than learned patterns
 
 Eco-1 learns from virtualized animal ecosystems to create truly emergent AI.
+
+## Key Contributions
+
+Eco-1 contributes a comprehensive system design that advances the state-of-the-art in multiple dimensions:
+
+### 1. z-JEPA: Hyper-Modal Learning Stack
+A Joint Embedding Predictive Architecture that extends V-JEPA 2 with:
+- **Cross-modal prediction**: Video→text, audio→video, 3D→action
+- **LLM alignment**: Direct integration with language models for instruction following
+- **Latent world modeling**: Learning dynamics in representation space, avoiding pixel reconstruction
+
+### 2. HLLM Control Plane (Hamiltonian LLM)
+Resource-aware orchestration via Qwen3 with:
+- **Thinking/non-thinking modes**: Controllable deliberation depth
+- **Hamiltonian dynamics**: Energy-conserving routing with dual variables
+- **Hidden Markov gating**: rSLDS priors for regime persistence
+- **GSPO optimization**: Stable MoE training via group sequence policy optimization
+
+### 3. MoE Everywhere Architecture
+Sparse experts across all modalities:
+- **Switch-style routing**: Top-k gating with load balancing
+- **Mixtral-style FFN experts**: Specialized feed-forward networks
+- **Capacity vs latency trade-offs**: Token-granular resource allocation
+
+### 4. EFE-Aligned Planning
+Principled exploration and exploitation:
+- **Expected Free Energy minimization**: Balance goal achievement with information gain
+- **Latent rollouts**: Planning in learned representation space
+- **Intrinsic motivation**: Natural curiosity drives from active inference
+
+### 5. BitDelta Personalization
+Memory-efficient per-user adaptation:
+- **1-bit delta weights**: 10×+ memory savings
+- **Safety benefits**: Quantization reduces jailbreak risks by ~60%
+- **Fast swapping**: Millisecond user model switching
+- **Privacy preservation**: Only store user deltas, not data
+
+### 6. Verifiable & Interoperable Design
+Standards-compliant integration:
+- **ZKML proofs**: Optional zero-knowledge inference verification
+- **MCP compatibility**: Anthropic's Model Context Protocol for tools
+- **IEEE 2874 Spatial Web**: HSML/HSTP for cross-agent coordination
 
 ## Specification
 
@@ -546,6 +595,31 @@ Technical Performance:
 - No raw user data exfiltration
 - Differential privacy option (ε=1.0)
 
+## Release Plans
+
+We will release the following components to enable reproducible research and deployment:
+
+1. **Reference PyTorch code for z-JEPA**: Complete implementation with modular encoders
+2. **Training scripts**: Video/audio/3D training pipelines with distributed support
+3. **EFE-regularized planners**: Active inference planning modules
+4. **BitDelta pipelines**: Quantization and serving infrastructure
+5. **(Q)LoRA adapters**: Fine-tuning scripts and pre-trained adapters
+6. **Optional ZKML recipes**: Proof generation for selected model heads
+7. **MCP/IEEE-2874 bindings**: Interoperability connectors
+
+All code will be released under permissive licenses to encourage adoption and innovation.
+
+## Limitations
+
+While Eco-1 represents significant advances, we acknowledge several limitations:
+
+1. **Composed from published work**: We synthesize existing research without new empirical results
+2. **EFE as inductive bias**: Expected Free Energy provides principled guidance but not guarantees
+3. **ZKML scalability**: Full-model zero-knowledge proofs remain computationally expensive
+4. **Real-time targets**: Latency budgets (150ms audio, 20ms motion) are aspirational based on industry standards
+5. **Animal behavior transfer**: Effectiveness of virtual→real behavior transfer needs validation
+6. **Compute requirements**: Pre-training requires significant GPU resources (512 H100s × 30 days)
+
 ## Fun Applications
 
 ### Virtual Pet AI
@@ -580,43 +654,96 @@ def generate_documentary(ecosystem, duration_hours=1):
 
 ## Academic References
 
-### Core Architecture Papers
-1. **I-JEPA**: Assran et al. (2023). "Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture." arXiv:2301.08243, CVPR'23.
-2. **V-JEPA**: Bardes et al. (2024). "V-JEPA: Latent Video Prediction for Visual Representation Learning." OpenReview.
-3. **V-JEPA 2**: Assran et al. (2025). "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning." arXiv:2506.09985.
-4. **3D-JEPA**: Hu et al. (2024). "3D-JEPA: A Joint Embedding Predictive Architecture for 3D Self-Supervised Representation Learning." arXiv:2409.15803.
-5. **Point-JEPA**: Saito et al. (2025). "Point-JEPA: A Joint Embedding Predictive Architecture for Self-Supervised Learning on Point Cloud." WACV 2025.
+### Core JEPA Architecture Papers
+1. **I-JEPA**: M. Assran, Q. Duval, I. Misra, et al. (2023). "Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture." arXiv:2301.08243, CVPR'23. [https://arxiv.org/abs/2301.08243](https://arxiv.org/abs/2301.08243)
+
+2. **V-JEPA**: A. Bardes, Q. Garrido, J. Ponce, et al. (2024). "V-JEPA: Latent Video Prediction for Visual Representation Learning." OpenReview. [https://openreview.net/forum?id=WFYbBOEOtv](https://openreview.net/forum?id=WFYbBOEOtv)
+
+3. **V-JEPA 2**: M. Assran, A. Bardes, D. Fan, Q. Garrido, et al. (2025). "V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning." arXiv:2506.09985. [https://arxiv.org/abs/2506.09985](https://arxiv.org/abs/2506.09985)
+
+4. **3D-JEPA**: N. Hu, H. Cheng, Y. Xie, et al. (2024). "3D-JEPA: A Joint Embedding Predictive Architecture for 3D Self-Supervised Representation Learning." arXiv:2409.15803. [https://arxiv.org/abs/2409.15803](https://arxiv.org/abs/2409.15803)
+
+5. **Point-JEPA**: W. Saito, Y. Yang, T. Matsubara (2025). "Point-JEPA: A Joint Embedding Predictive Architecture for Self-Supervised Learning on Point Cloud." WACV 2025. [https://openaccess.thecvf.com/WACV2025](https://openaccess.thecvf.com/WACV2025)
+
+6. **Slot Attention**: F. Locatello, D. Weissenborn, T. Unterthiner, et al. (2020). "Object-Centric Learning with Slot Attention." NeurIPS. [https://arxiv.org/abs/2006.15055](https://arxiv.org/abs/2006.15055)
 
 ### Active Inference & Planning
-6. **EFE Unification**: Champion et al. (2024). "Reframing the Expected Free Energy: Four Formulations and a Unification." arXiv:2402.14460.
-7. **EFE Planning**: de Vries et al. (2025). "Expected Free Energy-based Planning as Variational Inference." arXiv:2504.14898.
-8. **Active Inference Survey**: Lanillos et al. (2021). "Active Inference in Robotics and Artificial Agents: Survey and Challenges." arXiv:2112.01871.
-9. **DreamerV3**: Hafner et al. (2023). "Mastering Diverse Domains through World Models." arXiv:2301.04104.
+7. **EFE Unification**: T. Champion, H. Bowman, D. Marković, M. Grzęś (2024). "Reframing the Expected Free Energy: Four Formulations and a Unification." arXiv:2402.14460. [https://arxiv.org/abs/2402.14460](https://arxiv.org/abs/2402.14460)
 
-### Efficient Architectures
-10. **Qwen3**: Qwen Team (2025). "Qwen3: Think Deeper, Act Faster." Blog post.
-11. **GSPO**: Zheng et al. (2025). "Group Sequence Policy Optimization." arXiv:2507.18071.
-12. **Switch Transformers**: Fedus et al. (2021). "Switch Transformers: Scaling to Trillion Parameter Models." arXiv:2101.03961.
-13. **Mixtral**: Jiang et al. (2024). "Mixtral of Experts." arXiv:2401.04088.
-14. **FlashAttention-2**: Dao (2023). "FlashAttention-2: Faster Attention with Better Parallelism." arXiv:2307.08691.
+8. **EFE Planning**: B. de Vries, W. Nuijten, T. van de Laar, et al. (2025). "Expected Free Energy-based Planning as Variational Inference." arXiv:2504.14898. [https://arxiv.org/abs/2504.14898](https://arxiv.org/abs/2504.14898)
+
+9. **Active Inference Survey**: P. Lanillos, C. Meo, C. Pezzato, et al. (2021). "Active Inference in Robotics and Artificial Agents: Survey and Challenges." arXiv:2112.01871. [https://arxiv.org/abs/2112.01871](https://arxiv.org/abs/2112.01871)
+
+10. **Free Energy Principle**: P. Mazzaglia, T. Verbelen, B. Dhoedt (2022). "The Free Energy Principle for Perception and Action." Entropy. [https://www.mdpi.com/1099-4300/24/2/301](https://www.mdpi.com/1099-4300/24/2/301)
+
+11. **DreamerV3**: D. Hafner, J. Pasukonis, J. Ba, T. Lillicrap (2023). "Mastering Diverse Domains through World Models." arXiv:2301.04104. [https://arxiv.org/abs/2301.04104](https://arxiv.org/abs/2301.04104)
+
+### Efficient Architectures & Optimization
+12. **LoRA**: E. Hu, Y. Shen, P. Wallis, et al. (2021). "LoRA: Low-Rank Adaptation of Large Language Models." arXiv:2106.09685. [https://openreview.net/pdf?id=nZeVKeeFYf9](https://openreview.net/pdf?id=nZeVKeeFYf9)
+
+13. **QLoRA**: T. Dettmers, A. Pagnoni, A. Holtzman, L. Zettlemoyer (2023). "QLoRA: Efficient Finetuning of Quantized LLMs." arXiv:2305.14314. [https://openreview.net/forum?id=OUIFPHEgJU](https://openreview.net/forum?id=OUIFPHEgJU)
+
+14. **Switch Transformers**: W. Fedus, B. Zoph, N. Shazeer (2021). "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity." arXiv:2101.03961. [https://arxiv.org/abs/2101.03961](https://arxiv.org/abs/2101.03961)
+
+15. **Sparsely-Gated MoE**: N. Shazeer, A. Mirhoseini, K. Maziarz, et al. (2017). "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer." arXiv:1701.06538. [https://arxiv.org/abs/1701.06538](https://arxiv.org/abs/1701.06538)
+
+16. **Mixtral**: A. Q. Jiang, A. Sablayrolles, A. Roux, et al. (2024). "Mixtral of Experts." arXiv:2401.04088. [https://arxiv.org/abs/2401.04088](https://arxiv.org/abs/2401.04088)
+
+17. **FlashAttention-2**: T. Dao (2023). "FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning." arXiv:2307.08691. [https://arxiv.org/abs/2307.08691](https://arxiv.org/abs/2307.08691)
+
+18. **Speculative Decoding**: Y. Leviathan, M. Kalman, Y. Matias (2022). "Fast Inference from Transformers via Speculative Decoding." arXiv:2211.17192. [https://arxiv.org/abs/2211.17192](https://arxiv.org/abs/2211.17192)
+
+19. **rSLDS**: S. Linderman, A. Miller, R. Adams, et al. (2016). "Recurrent Switching Linear Dynamical Systems." arXiv:1610.08466. [https://arxiv.org/abs/1610.08466](https://arxiv.org/abs/1610.08466)
 
 ### Personalization & Safety
-15. **BitDelta**: Liu et al. (2024). "BitDelta: Your Fine-Tune May Only Be Worth One Bit." NeurIPS 2024.
-16. **QDW Safety**: Liu et al. (2024). "Quantized Delta Weight Is Safety Keeper." arXiv:2411.19530.
-17. **LoRA**: Hu et al. (2021). "LoRA: Low-Rank Adaptation of Large Language Models." arXiv:2106.09685.
-18. **QLoRA**: Dettmers et al. (2023). "QLoRA: Efficient Finetuning of Quantized LLMs." arXiv:2305.14314.
+20. **BitDelta (arXiv)**: J. Liu, G. Xiao, K. Li, J. D. Lee, S. Han, T. Dao, T. Cai (2024). "BitDelta: Your Fine-Tune May Only Be Worth One Bit." arXiv:2402.10193. [https://arxiv.org/abs/2402.10193](https://arxiv.org/abs/2402.10193)
+
+21. **BitDelta (NeurIPS)**: J. Liu, G. Xiao, K. Li, et al. (2024). "BitDelta: Your Fine-Tune May Only Be Worth One Bit." NeurIPS 2024. [https://proceedings.neurips.cc/paper_files/paper/2024](https://proceedings.neurips.cc/paper_files/paper/2024)
+
+22. **QDW Safety**: Y. Liu, Z. Sun, X. He, X. Huang (2024). "Quantized Delta Weight Is Safety Keeper." arXiv:2411.19530. [https://arxiv.org/abs/2411.19530](https://arxiv.org/abs/2411.19530)
 
 ### Verifiability & Standards
-19. **ZKML**: Chen et al. (2024). "ZKML: An Optimizing System for ML Inference in Zero-Knowledge Proofs." EuroSys 2024.
-20. **Model Context Protocol**: Anthropic (2024). "Introducing the Model Context Protocol."
-21. **IEEE 2874**: IEEE Standards Association (2025). "IEEE 2874-2025: Spatial Web Architecture."
-22. **ITU-T G.114**: ITU-T (2003). "Recommendation G.114: One-Way Transmission Time."
+23. **ZKML**: B. J. Chen, S. Waiwitlikhit, I. Stoica, Y. Sun, T. Hashimoto, D. Kang (2024). "ZKML: An Optimizing System for ML Inference in Zero-Knowledge Proofs." EuroSys 2024. [https://dl.acm.org/doi/10.1145/3627703.3650088](https://dl.acm.org/doi/10.1145/3627703.3650088)
+
+24. **ZKTorch**: B. J. Chen, L. Tang, D. Kang (2025). "ZKTorch: Compiling ML Inference to Zero-Knowledge Proofs via Parallel Proof Accumulation." arXiv:2507.07031. [https://arxiv.org/abs/2507.07031](https://arxiv.org/abs/2507.07031)
+
+25. **Model Context Protocol**: Anthropic (2024). "Introducing the Model Context Protocol (MCP)." [https://www.anthropic.com/news/model-context-protocol](https://www.anthropic.com/news/model-context-protocol)
+
+26. **IEEE 2874**: IEEE Standards Association (2025). "IEEE 2874-2025: Spatial Web, Architecture and Governance." [https://standards.ieee.org/ieee/2874/11717/](https://standards.ieee.org/ieee/2874/11717/)
+
+### Language Models & Training
+27. **Qwen3**: Qwen Team (2025). "Qwen3: Think Deeper, Act Faster." Blog. [https://qwenlm.github.io/blog/qwen3/](https://qwenlm.github.io/blog/qwen3/)
+
+28. **GSPO**: C. Zheng, S. Liu, M. Li, et al. (2025). "Group Sequence Policy Optimization." arXiv:2507.18071. [https://arxiv.org/abs/2507.18071](https://arxiv.org/abs/2507.18071)
+
+### Latency & Performance Standards
+29. **ITU-T G.114**: ITU-T (2003). "Recommendation G.114: One-Way Transmission Time." [https://www.itu.int/rec/T-REC-G.114](https://www.itu.int/rec/T-REC-G.114)
+
+30. **Motion-to-Photon Latency**: M. Warburton, E. Mitchell, et al. (2022/2023). "Measuring motion-to-photon latency for sensorimotor control in VR." Behavior Research Methods. [https://link.springer.com/article/10.3758/s13428-022-01983-5](https://link.springer.com/article/10.3758/s13428-022-01983-5)
+
+31. **Low Latency Displays**: P. C. Lincoln (2017). "Low Latency Displays for Augmented Reality." PhD Thesis, UCF. [https://sreal.ucf.edu/wp-content/uploads/2018/02/dissertation_lincoln-op.pdf](https://sreal.ucf.edu/wp-content/uploads/2018/02/dissertation_lincoln-op.pdf)
 
 ### Additional Resources
 - Unity ML-Agents Toolkit: [github.com/Unity-Technologies/ml-agents](https://github.com/Unity-Technologies/ml-agents)
 - Animal Behavior: An Evolutionary Approach (Alcock, 2013)
-- Slot Attention: Locatello et al. (2020), NeurIPS
+- Locate-3D: Unified 3D localization and understanding benchmark
 
-## Copyright
+## License & Copyright
 
-Copyright and related rights waived via [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+This work is released under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** license.
+
+Full license text: [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
+
+## Acknowledgments
+
+We thank authors of I-/V-JEPA, Qwen, Mixtral, and ZKML systems for open research artifacts. Special thanks to Meta Research for V-JEPA 2's groundbreaking video understanding work and the broader Active Inference research community for theoretical foundations.
+
+## Author Information
+
+**Zoo Research Group, Z, and Collaborators**  
+Zoo Labs Foundation Inc.  
+A Delaware-based 501(c)(3) non-profit organization  
+
+---
+
+*Building the future of AI-powered DeFi, gaming, and emergent intelligence through restorative justice and community governance.*
