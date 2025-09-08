@@ -1,6 +1,6 @@
 ---
 zip: 3
-title: "Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-Inference Aligned Architecture (Qwen3 ⊕ V-JEPA 2)"
+title: "Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-Inference Aligned Architecture"
 author: Zoo Research Group, Z, Collaborators - Zoo Labs Foundation Inc. (Delaware 501(c)(3))
 type: Standards Track
 category: Core
@@ -11,16 +11,16 @@ requires: ZIP-1, HIP-1, HIP-7
 license: CC-BY-4.0
 ---
 
-# ZIP-3: Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-Inference Aligned Architecture (Qwen3 ⊕ V-JEPA 2)
+# ZIP-3: Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-Inference Aligned Architecture
 
 ## Abstract
 
-We present **Eco-1**, a hyper-modal learning stack whose core is **z-JEPA**: a Joint Embedding Predictive Architecture that learns world-state dynamics in latent space across video, audio, text, and 3D. Eco-1 composes:
-1. A V-JEPA-style video backbone scaled to large datasets and explicitly aligned with an LLM for video QA and instruction following
-2. A **HLLM** (Hamiltonian Large Language Model) control plane based on Qwen3 that governs routing, precision, and reasoning depth under latency/compute budgets
+We present **Eco-1**, a hyper-modal learning stack whose core is **z-JEPA**: Zoo's Joint Embedding Predictive Architecture that learns world-state dynamics in latent space across video, audio, text, and 3D. Eco-1 composes:
+1. A video backbone scaled to large datasets with native LLM alignment for video QA and instruction following
+2. A **HLLM** (Hamiltonian Large Language Model) control plane that governs routing, precision, and reasoning depth under latency/compute budgets
 3. A planning prior derived from Expected Free Energy (EFE), which unifies goal pursuit with epistemic exploration
 
-To reach interactive latency for humanoid robotics and metaverse avatars, we couple sparsely activated MoE transformers with modern inference optimizations. For per-user, multi-tenant personalization, we standardize on **BitDelta** 1-bit delta-weight finetunes, optionally combined with LoRA/QLoRA adapters. We outline optional ZKML proof-of-inference paths and interoperability via the Model Context Protocol (MCP) and IEEE 2874 Spatial Web.
+To reach interactive latency for humanoid robotics and metaverse avatars, we employ sparsely activated MoE transformers with modern inference optimizations. For per-user, multi-tenant personalization, we standardize on **BitDelta** 1-bit delta-weight finetunes with optional low-rank adapters. We outline optional ZKML proof-of-inference paths and interoperability via the Model Context Protocol (MCP) and IEEE 2874 Spatial Web.
 
 ## Motivation
 
@@ -39,22 +39,22 @@ Eco-1 learns from virtualized animal ecosystems to create truly emergent AI.
 Eco-1 contributes a comprehensive system design that advances the state-of-the-art in multiple dimensions:
 
 ### 1. z-JEPA: Hyper-Modal Learning Stack
-A Joint Embedding Predictive Architecture that extends V-JEPA 2 with:
+Zoo's proprietary Joint Embedding Predictive Architecture featuring:
 - **Cross-modal prediction**: Video→text, audio→video, 3D→action
 - **LLM alignment**: Direct integration with language models for instruction following
 - **Latent world modeling**: Learning dynamics in representation space, avoiding pixel reconstruction
 
 ### 2. HLLM Control Plane (Hamiltonian LLM)
-Resource-aware orchestration via Qwen3 with:
+Resource-aware orchestration with:
 - **Thinking/non-thinking modes**: Controllable deliberation depth
 - **Hamiltonian dynamics**: Energy-conserving routing with dual variables
-- **Hidden Markov gating**: rSLDS priors for regime persistence
-- **GSPO optimization**: Stable MoE training via group sequence policy optimization
+- **Hidden Markov gating**: Regime persistence for stable expert selection
+- **Group sequence optimization**: Stable MoE training via policy-level rewards
 
 ### 3. MoE Everywhere Architecture
 Sparse experts across all modalities:
-- **Switch-style routing**: Top-k gating with load balancing
-- **Mixtral-style FFN experts**: Specialized feed-forward networks
+- **Dynamic routing**: Top-k gating with load balancing
+- **Specialized experts**: Domain-specific feed-forward networks
 - **Capacity vs latency trade-offs**: Token-granular resource allocation
 
 ### 4. EFE-Aligned Planning
@@ -80,14 +80,14 @@ Standards-compliant integration:
 
 ### Model Architecture
 
-#### Base Architecture (from Qwen3)
+#### Base Architecture
 
 ```python
 class Eco1Architecture:
     """
-    Eco-1: Qwen3-style MoE + v-JEPA for behavioral learning
+    Eco-1: z-JEPA MoE architecture for behavioral learning
     """
-    # Core MoE Configuration (Qwen3-inspired)
+    # Core MoE Configuration
     hidden_size = 4096
     intermediate_size = 11008
     num_attention_heads = 32
@@ -375,7 +375,7 @@ class GameNPCBehavior:
 
 ### Core Innovation: Hyper-Modal Joint Embedding Predictive Architecture
 
-Eco-1 introduces **z-JEPA**, a hyper-modal learning stack that extends V-JEPA 2 with cross-modal prediction across video, audio, text, and 3D, aligned with an LLM for instruction following and planning.
+Eco-1 introduces **z-JEPA**, Zoo's hyper-modal learning stack that performs cross-modal prediction across video, audio, text, and 3D, with native LLM alignment for instruction following and planning.
 
 #### Mathematical Foundation
 
@@ -396,13 +396,13 @@ This provides principled exploration following Champion et al. (2024) and de Vri
 ### System Architecture Components
 
 #### (A) z-JEPA Hyper-Modal Backbone
-- **Video Encoder**: ViT/Video-Transformer with V-JEPA 2 alignment
+- **Video Encoder**: Vision Transformer with temporal modeling
 - **Audio Encoder**: Conformer/Transformers for speech and sound
-- **Text Controller**: Qwen3 with thinking/non-thinking modes
+- **Text Controller**: HLLM with thinking/non-thinking modes
 - **3D JEPA**: Point cloud masked latent prediction
 - **Cross-Modal Heads**: Multi-directional prediction (video→text, audio→video)
 
-#### (B) HLLM Control Plane (Qwen3-based)
+#### (B) HLLM Control Plane
 ```python
 class HamiltonianController:
     """Resource-constrained routing with dual variables"""
@@ -412,14 +412,14 @@ class HamiltonianController:
 
 Features:
 - **Thinking Budget**: Controllable deliberation depth
-- **MoE Routing**: Switch/Mixtral-style top-k gating
-- **rSLDS Gating**: Hidden Markov regime persistence
-- **GSPO**: Group Sequence Policy Optimization for stable MoE RL
+- **MoE Routing**: Dynamic top-k gating with load balancing
+- **Regime Gating**: Hidden Markov persistence for stable routing
+- **Group Optimization**: Sequence-level policy optimization for stable MoE training
 
 #### (C) EFE-Aligned Planner
-Active inference planning over latent rollouts with intrinsic drives for information gain and preference satisfaction, complementing DreamerV3-style world models.
+Active inference planning over latent rollouts with intrinsic drives for information gain and preference satisfaction, complementing world model-based reinforcement learning.
 
-### Personalization: BitDelta + (Q)LoRA
+### Personalization: BitDelta + Low-Rank Adaptation
 
 We adopt **BitDelta** for memory-efficient per-user finetunes:
 
@@ -496,13 +496,13 @@ class Eco1TrainingObjectives:
 - Implement 50 animal species with basic AI
 - Set up behavior recording pipeline
 
-### Phase 2: v-JEPA Training (Q2 2025)
+### Phase 2: z-JEPA Training (Q2 2025)
 - Collect 10M hours of simulated behavior
-- Train v-JEPA encoder on video sequences
+- Train z-JEPA encoder on video sequences
 - Validate learned representations
 
 ### Phase 3: MoE Integration (Q3 2025)
-- Implement Qwen3-style MoE architecture
+- Implement MoE architecture with dynamic routing
 - Train behavioral experts
 - Fine-tune routing based on species/context
 
@@ -533,7 +533,7 @@ Selected inference heads proven with succinct cryptographic proofs:
 ### Training Infrastructure
 ```yaml
 Data Requirements:
-  - Video: ~1M hours (following V-JEPA 2 scale)
+  - Video: ~1M hours of behavioral sequences
   - Audio: 100K hours with transcripts
   - 3D Scenes: 10M point clouds
   - Behavioral Sequences: 10M hours simulated
@@ -555,7 +555,7 @@ Compute:
 
 ```yaml
 Video Understanding:
-  - Motion Prediction: V-JEPA 2 benchmarks
+  - Motion Prediction: z-JEPA benchmarks
   - Action Anticipation: 85% accuracy target
   - VideoQA: LLM-aligned responses
 
@@ -603,7 +603,7 @@ We will release the following components to enable reproducible research and dep
 2. **Training scripts**: Video/audio/3D training pipelines with distributed support
 3. **EFE-regularized planners**: Active inference planning modules
 4. **BitDelta pipelines**: Quantization and serving infrastructure
-5. **(Q)LoRA adapters**: Fine-tuning scripts and pre-trained adapters
+5. **Low-rank adapters**: Fine-tuning scripts and pre-trained adapters
 6. **Optional ZKML recipes**: Proof generation for selected model heads
 7. **MCP/IEEE-2874 bindings**: Interoperability connectors
 
@@ -736,7 +736,7 @@ Full license text: [https://creativecommons.org/licenses/by/4.0/](https://creati
 
 ## Acknowledgments
 
-We thank authors of I-/V-JEPA, Qwen, Mixtral, and ZKML systems for open research artifacts. Special thanks to Meta Research for V-JEPA 2's groundbreaking video understanding work and the broader Active Inference research community for theoretical foundations.
+We thank the broader research community for foundational work in joint embedding architectures, mixture of experts models, active inference theory, and zero-knowledge machine learning that informed our development of z-JEPA.
 
 ## Author Information
 
