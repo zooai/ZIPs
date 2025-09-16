@@ -6,7 +6,7 @@ type: Standards Track
 category: Core
 status: Draft
 created: 2025-01-09
-requires: ZIP-1, ZIP-3, ZIP-6, HIP-6
+requires: ZIP-1, ZIP-3, ZIP-6, ZIP-12, HIP-6
 ---
 
 # ZIP-7: BitDelta + DeltaSoup - Personalized and Community AI
@@ -165,8 +165,8 @@ def create_deltasoup(
         safety_fn=verify_safety_preservation
     )
     
-    # Step 4: Record contributors for royalties
-    contributors = [d.user_id for d in verified_deltas]
+    # Step 4: Record contributors for royalties (using Lux ID)
+    contributors = [d.user_lux_id for d in verified_deltas]  # did:lux:122:0x...
     contribution_weights = calculate_contribution_weights(verified_deltas)
     
     return ReferenceAdapter(
@@ -252,72 +252,81 @@ class DPBitDelta:
 ### On-Chain Integration
 
 ```solidity
+// Implements LP-303 (ILPRoyalties) and LP-107 (PersonaCredential)
 contract BitDeltaRegistry {
     struct BitDelta {
         bytes32 baseModelHash;
         bytes32 deltaHash;
-        address owner;
-        uint256 compressionRatio;  // e.g., 10 for 10×
+        string ownerLuxId;          // did:lux:122:0x... (LP-200)
+        uint256 compressionRatio;   // e.g., 10 for 10×
         bool isPrivate;
         PrivacyBudget privacy;
+        bytes32 receiptHash;        // LP-105 ComputeReceipt
     }
     
     struct DeltaSoup {
         bytes32 referenceAdapterHash;
-        address[] contributors;
-        uint256[] weights;  // Contribution weights for royalties
+        string[] contributorLuxIds;  // Array of did:lux identifiers
+        uint256[] weights;            // Contribution weights for royalties (LP-106)
         uint256 version;
         bool active;
+        RoyaltyMap royalties;         // LP-106 royalty distribution
     }
     
-    mapping(address => BitDelta[]) public userDeltas;
+    mapping(string => BitDelta[]) public userDeltas;  // Keyed by Lux ID
     mapping(uint256 => DeltaSoup) public referenceSoups;
     
-    event DeltaPublished(address user, bytes32 deltaHash, bool isPrivate);
-    event SoupCreated(uint256 soupId, bytes32 adapterHash, address[] contributors);
+    event DeltaPublished(string userLuxId, bytes32 deltaHash, bool isPrivate);
+    event SoupCreated(uint256 soupId, bytes32 adapterHash, string[] contributorLuxIds);
     
     function publishBitDelta(
+        string calldata userLuxId,  // did:lux:122:0x...
         bytes32 baseModelHash,
         bytes32 deltaHash,
         uint256 compressionRatio,
         bool makePublic,
-        bytes calldata teeAttestation
+        bytes calldata teeAttestation,
+        bytes calldata computeReceipt  // LP-105
     ) external {
         require(verifyTEE(teeAttestation), "Invalid TEE attestation");
+        require(verifyLuxId(userLuxId, msg.sender), "Invalid Lux ID");
         
         BitDelta memory delta = BitDelta({
             baseModelHash: baseModelHash,
             deltaHash: deltaHash,
-            owner: msg.sender,
+            ownerLuxId: userLuxId,
             compressionRatio: compressionRatio,
             isPrivate: !makePublic,
-            privacy: extractPrivacyBudget(teeAttestation)
+            privacy: extractPrivacyBudget(teeAttestation),
+            receiptHash: keccak256(computeReceipt)
         });
         
-        userDeltas[msg.sender].push(delta);
-        emit DeltaPublished(msg.sender, deltaHash, !makePublic);
+        userDeltas[userLuxId].push(delta);
+        emit DeltaPublished(userLuxId, deltaHash, !makePublic);
     }
     
     function createDeltaSoup(
         bytes32[] calldata deltaHashes,
-        address[] calldata contributors,
+        string[] calldata contributorLuxIds,  // did:lux identifiers
         uint256[] calldata weights,
-        bytes calldata aggregationProof
+        bytes calldata aggregationProof,
+        RoyaltyMap calldata royaltyDistribution  // LP-106
     ) external returns (uint256 soupId) {
         require(verifyAggregation(aggregationProof), "Invalid aggregation");
-        require(contributors.length == weights.length, "Mismatched arrays");
+        require(contributorLuxIds.length == weights.length, "Mismatched arrays");
         
         soupId = nextSoupId++;
         
         referenceSoups[soupId] = DeltaSoup({
             referenceAdapterHash: keccak256(abi.encode(deltaHashes)),
-            contributors: contributors,
+            contributorLuxIds: contributorLuxIds,
             weights: weights,
             version: block.timestamp,
-            active: true
+            active: true,
+            royalties: royaltyDistribution
         });
         
-        emit SoupCreated(soupId, referenceSoups[soupId].referenceAdapterHash, contributors);
+        emit SoupCreated(soupId, referenceSoups[soupId].referenceAdapterHash, contributorLuxIds);
     }
 }
 ```
@@ -335,12 +344,12 @@ class BitDeltaServingEngine:
         self.delta_cache = LRUCache(max_size=10000)  # 10K users
         self.gpu_memory = GPUMemoryPool()
     
-    def serve_request(self, user_id, prompt):
+    def serve_request(self, user_lux_id: str, prompt):  # did:lux:122:0x...
         # Load user's BitDelta (compressed)
-        delta = self.delta_cache.get(user_id)
+        delta = self.delta_cache.get(user_lux_id)
         if not delta:
-            delta = load_from_storage(user_id)
-            self.delta_cache.put(user_id, delta)
+            delta = load_from_storage(user_lux_id)
+            self.delta_cache.put(user_lux_id, delta)
         
         # Efficient batched serving
         with self.gpu_memory.allocate(delta.memory_required()):

@@ -2,7 +2,7 @@
 
 Zoo Improvement Proposals (ZIPs) are the primary mechanism for proposing new features, gathering community input, and documenting design decisions for the [Zoo](https://zoo.fund) ecosystem. This process ensures that changes to the Zoo platform are transparently reviewed and achieve community consensus before implementation.
 
-**🦁 Zoo: Restorative Justice & Emergent AI through DeFi** - An EVM L2 on Lux Network with 100% genesis airdrop to Logan Paul CryptoZoo victims, operating under 501(c)(3) non-profit governance.
+**🦁 Zoo: AI-Powered DeFi, Gaming & Education Platform** - An EVM L2 (Chain ID: 122) on Lux Network, serving as the LP-R (Registry) for the decentralized AI ecosystem.
 
 ## What is a ZIP?
 
@@ -24,11 +24,17 @@ A Zoo Improvement Proposal (ZIP) is a design document that provides information 
 | Number | Title | Author(s) | Type | Category | Status |
 |:-------|:------|:----------|:-----|:---------|:-------|
 | [ZIP-0](./ZIPs/zip-0.md) | Zoo Ecosystem Architecture & Framework | Zoo Team | Meta | - | Final |
-| [ZIP-1](./ZIPs/zip-1.md) | User-Personalized AI Models & ZOO Tokenomics | Zoo Team | Standards Track | Core | Draft |
+| [ZIP-1](./ZIPs/zip-1.md) | Hamiltonian LLMs for Zoo | Zoo Team | Standards Track | Core | Draft |
 | [ZIP-2](./ZIPs/zip-2.md) | Genesis Airdrop to Original ZOO Token Victims | Zoo Team | Standards Track | Core | Final |
 | [ZIP-3](./ZIPs/zip-3.md) | Eco-1: z-JEPA Hyper-Modal Architecture | Zoo Team | Standards Track | Core | Draft |
+| [ZIP-4](./ZIPs/zip-4.md) | Decentralized Science Funding Platform | Zoo Team | Standards Track | DeFi | Draft |
 | [ZIP-5](./ZIPs/zip-5.md) | Post-Quantum Security for DeFi & NFTs | Zoo Team | Standards Track | Security | Final |
 | [ZIP-6](./ZIPs/zip-6.md) | User-Owned AI Models as NFTs | Zoo Team | Standards Track | Core | Draft |
+| [ZIP-7](./ZIPs/zip-7.md) | BitDelta + DeltaSoup - Personalized and Community AI | Zoo Labs Foundation | Standards Track | Core | Draft |
+| [ZIP-8](./ZIPs/zip-8.md) | Specialized Avatar Tutors for Personalized Learning | Zoo Labs Foundation | Standards Track | Core | Draft |
+| [ZIP-9](./ZIPs/zip-9.md) | Unified BitDelta Architecture for All Zoo AI Systems | Zoo Labs Foundation | Standards Track | Core | Draft |
+| [ZIP-10](./ZIPs/zip-10.md) | Zoo Launch Models - Eco-1, Coder-1, and Nano-1 | Zoo Labs Foundation | Standards Track | Core | Draft |
+| [ZIP-11](./ZIPs/zip-11.md) | Spatial Web, Active Inference, and A2A Economies | Zoo Labs Foundation | Standards Track | Core | Draft |
 
 ## ZIP Process
 
