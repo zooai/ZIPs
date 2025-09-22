@@ -2,7 +2,7 @@
 
 Zoo Improvement Proposals (ZIPs) are the primary mechanism for proposing new features, gathering community input, and documenting design decisions for the [Zoo](https://zoo.fund) ecosystem. This process ensures that changes to the Zoo platform are transparently reviewed and achieve community consensus before implementation.
 
-**🦁 Zoo: AI-Powered DeFi, Gaming & Education Platform** - An EVM L2 (Chain ID: 122) on Lux Network, serving as the LP-R (Registry) for the decentralized AI ecosystem.
+**🦁 Zoo: AI-Powered DeFi, Gaming & Education Platform** - An EVM L2 (Chain ID: 200200) on Lux Network, serving as the LP-R (Registry) for the decentralized AI ecosystem.
 
 ## What is a ZIP?
 
