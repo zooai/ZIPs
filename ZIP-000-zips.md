@@ -33,18 +33,26 @@ Each ZIP contains:
 
 - **ZIP-000**: This meta-document
 - **ZIP-001**: DSO (Decentralized Semantic Optimization)
-- **ZIP-002+**: Future proposals
+- **ZIP-002**: PoAI (Proof of AI) - Consensus and verification layer
+- **ZIP-003+**: Future proposals
 
 ## Relationship to HIPs
 
 Zoo Improvement Proposals (ZIPs) often **build on** Hanzo Improvement Proposals (HIPs):
 
-- **HIP-002 (ASO)**: Foundation for ZIP-001 (DSO)
-- **HIP-004 (HMM)**: Economic layer for ZIP-001 (DSO)
+- **HIP-002 (ASO)**: Foundation for ZIP-001 (DSO) and ZIP-002 (PoAI)
+- **HIP-004 (HMM)**: Economic layer that uses ZIP-002 (PoAI) for quality verification
 
 This reflects the partnership:
-- **Hanzo AI Inc**: Infrastructure, compute markets, network (HIPs)
-- **Zoo Labs Foundation**: Decentralized learning, semantic optimization (ZIPs)
+- **Hanzo AI Inc**: Infrastructure, compute markets, economic layer (HIPs)
+  - HMM (HIP-004): Pricing and settlement
+  - ASO (HIP-002): Single-agent foundation
+  - Network: L1 blockchain
+  
+- **Zoo Labs Foundation**: Consensus, verification, collective intelligence (ZIPs)
+  - PoAI (ZIP-002): Consensus and quality verification
+  - DSO (ZIP-001): Multi-agent coordination
+  - Experiential layer: Collective intelligence
 
 ## Co-Development Model
 
