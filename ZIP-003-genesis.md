@@ -79,8 +79,9 @@ The principles established in Zoo's genesis (October 2021) continue to guide the
 ## Documentation
 
 **Full Documentation**: https://docs.zoo.dev
+**Complete Whitepaper**: [zoo-genesis-whitepaper.md](https://github.com/zooai/papers/blob/main/zoo-genesis-whitepaper.md)
 
-The complete genesis whitepaper includes:
+The complete genesis whitepaper (33KB, 770 lines) includes:
 
 ### Introduction
 - Abstract

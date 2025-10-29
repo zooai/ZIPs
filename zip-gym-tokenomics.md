@@ -189,6 +189,35 @@ Voting Power = (GYM Staked * 1.0) + (GYM in LP * 0.5) + (Mining Contribution * 0
 - Federated learning support
 - Enterprise API launch
 
+## Related Protocols
+
+### Zoo Infrastructure
+
+- **[ZIP-001 (DSO)](./ZIP-001-dso.md)**: Decentralized Semantic Optimization - Byzantine-robust prior aggregation
+- **[ZIP-002 (PoAI)](./ZIP-002-poai.md)**: Proof of AI consensus for verifiable AI compute
+- **[ZIP-003 (Genesis)](./ZIP-003-genesis.md)**: October 2021 foundation with AI agent-backed NFTs
+- **[GYM Protocol](./zip-gym-protocol.md)**: Technical specification for training network
+
+### Hanzo Integration
+
+- **[HIP-002 (ASO)](https://github.com/hanzoai/papers/blob/main/hips/HIP-002-aso.md)**: Active Semantic Optimization - Foundation for training-free adaptation
+- **[HIP-004 (HMM)](https://github.com/hanzoai/papers/blob/main/hips/HIP-004-hmm.md)**: Hamiltonian Market Maker for AI compute pricing
+
+### Research Papers
+
+- **[Zoo DSO Paper](https://github.com/zooai/papers/blob/main/zoo-dso.pdf)**: Technical paper on decentralized semantic optimization
+- **[Zoo Genesis Whitepaper](https://github.com/zooai/papers/blob/main/zoo-genesis-whitepaper.md)**: Complete October 2021 genesis documentation
+- **[Zen Models](https://zenlm.ai)**: Ultra-efficient LLMs (600M-480B parameters) co-developed with Hanzo AI
+
+## Ecosystem Links
+
+- **Website**: [zoo.ngo](https://zoo.ngo) - Zoo Labs Foundation (501c3)
+- **AI Chat**: [ai.zoo.ngo](https://ai.zoo.ngo) - Chat with Zoo AI agents
+- **Training Library**: [gym.zoo.ngo](https://gym.zoo.ngo) - Decentralized training network
+- **Blockchain**: [zoo.network](https://zoo.network) - Zoo blockchain explorer
+- **Models**: [zenlm.ai](https://zenlm.ai) - Zen model family
+- **Contact**: foundation@zoo.ai
+
 ## Conclusion
 
-The GYM token creates a sustainable economic model for decentralized AI training, aligning incentives between compute providers, model consumers, and the broader Zoo ecosystem. Through careful tokenomics design and deep integration with existing Zoo protocols, GYM establishes itself as the foundational token for AI infrastructure in the Web3 era.
+The GYM token creates a sustainable economic model for decentralized AI training, aligning incentives between compute providers, model consumers, and the broader Zoo ecosystem. Through careful tokenomics design and deep integration with existing Zoo protocols (DSO, PoAI) and Hanzo infrastructure (ASO, HMM), GYM establishes itself as the foundational token for democratizing AI infrastructure in the Web3 era.
