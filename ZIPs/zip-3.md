@@ -551,6 +551,39 @@ Compute:
 - **Gradient Accumulation**: Effective batch 4096
 - **Mixed Precision**: BF16 with dynamic loss scaling
 
+## Reference Implementation
+
+**Repository**: [zooai/eco-1](https://github.com/zooai/eco-1)
+
+**Key Files**:
+- `/models/z_jepa.py` - Core z-JEPA architecture implementation
+- `/models/video_encoder.py` - ViT-Huge video encoder
+- `/models/hllm.py` - Hamiltonian LLM orchestration layer
+- `/models/moe_transformer.py` - MoE transformer with dynamic routing
+- `/models/efe_planner.py` - Expected Free Energy planning module
+- `/training/pretrain.py` - Pretraining pipeline on behavioral data
+- `/training/bitdelta.py` - BitDelta 1-bit weight adaptation
+- `/inference/latency_optimized.py` - Sub-100ms inference optimizations
+- `/data/behavioral_dataset.py` - Dataset loader for ecosystem simulations
+- `/evaluation/benchmarks.py` - Evaluation metrics and benchmarks
+- `/zkml/proof_generation.py` - Optional ZKML proof-of-inference
+- `/mcp/context_protocol.py` - Model Context Protocol integration
+- `/spatial_web/ieee2874.py` - IEEE 2874 Spatial Web compliance
+- `/tests/` - Comprehensive test suite for all components
+
+**Status**: In Development (Alpha Release Q2 2025)
+
+**Pre-trained Models**:
+- `eco-1-base` (16B params) - Base z-JEPA model
+- `eco-1-large` (32B params) - Large-scale behavioral model
+- `eco-1-moe` (64B params, 8 experts) - MoE version for production
+
+**Documentation**:
+- Training guide: `/docs/training.md`
+- Inference optimization: `/docs/inference.md`
+- BitDelta personalization: `/docs/bitdelta.md`
+- ZKML integration: `/docs/zkml.md`
+
 ## Evaluation Metrics
 
 ```yaml

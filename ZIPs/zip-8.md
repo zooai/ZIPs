@@ -1157,6 +1157,42 @@ https://github.com/zooai/avatar-tutors/tree/main/evaluation
 - [ZIP-6: User-Owned AI Models](./zip-6.md) - Personalization framework
 - [ZIP-7: BitDelta](./zip-7.md) - Efficient model compression
 
+## Reference Implementation
+
+**Repository**: [zooai/avatar-tutors](https://github.com/zooai/avatar-tutors)
+
+**Key Files**:
+- `/avatars/tutor_engine.py` - Core avatar tutoring engine
+- `/avatars/specializations/` - Domain-specific avatar implementations (math, science, language, etc.)
+- `/prerequisite/knowledge_graph.py` - Prerequisite knowledge graph construction
+- `/prerequisite/scaffolding.py` - Adaptive prerequisite scaffolding
+- `/personalization/learning_style.py` - Learning style detection and adaptation
+- `/rag/educational_rag.py` - RAG pipeline for educational content
+- `/assessment/progress_tracking.py` - Student progress monitoring
+- `/assessment/formative_assessment.py` - Real-time learning assessment
+- `/bitdelta/student_models.py` - BitDelta personalization per student
+- `/ui/avatar_interface.tsx` - Interactive avatar UI components
+- `/api/tutor_api.ts` - API for avatar interactions
+- `/tests/learning_outcomes_tests.py` - Learning effectiveness tests
+
+**Status**: In Development (Alpha Q2 2025)
+
+**Related Repositories**:
+- Educational RAG: [zooai/educational-rag](https://github.com/zooai/educational-rag)
+- Learning Assessment: [zooai/learning-assessment](https://github.com/zooai/learning-assessment)
+- Deployment: [zooai/avatar-deploy](https://github.com/zooai/avatar-deploy)
+
+**Live Services**:
+- Student portal: https://learn.zoo.ai
+- Educator dashboard: https://teach.zoo.ai
+- Research metrics: https://research.zoo.ai
+
+**Integration**:
+- ZIP-3 Eco-1 for multimodal learning
+- ZIP-7 BitDelta for per-student personalization
+- ZIP-6 Student-owned learning model NFTs
+- ZIP-1 HLLM for adaptive tutoring
+
 ## Implementation Resources
 
 ### GitHub Repositories

@@ -8,6 +8,7 @@ status: Final
 created: 2025-01-09
 requires: ZIP-12
 supersedes: ZIP-2, ZIP-5
+repository: https://github.com/zooai/lp-standards-conformance
 ---
 
 # ZIP-13: LP Standards Conformance and Chain Interoperability
@@ -408,6 +409,26 @@ describe("LP Standards Conformance", () => {
 ### From ZIP-5 (Post-Quantum)
 - Dilithium keys supported in Lux ID
 - Gradual migration as quantum threat emerges
+
+## Reference Implementation
+
+**Repository**: [zooai/lp-standards-conformance](https://github.com/zooai/lp-standards-conformance)
+
+**Key Files**:
+- `/contracts/ZooERC20.sol` - Extended ERC-20 with Lux ID support
+- `/contracts/ZooModelNFT.sol` - ERC-721 for AI models
+- `/contracts/BitDeltaMultiToken.sol` - ERC-1155 for BitDelta adapters
+- `/contracts/AgentAccount.sol` - ERC-4337 account abstraction for agents
+- `/contracts/ZooBridge.sol` - LP-401 bridge implementation
+- `/src/ZooUI.tsx` - LP UI/UX conformance implementation
+- `/tests/` - Standards compliance test suite
+
+**Status**: Implemented
+
+**Integration Points**:
+- Chain ID: 122 (Zoo Network)
+- Bridge to Lux (120) and Hanzo (121)
+- Implements LP-101, LP-105, LP-106, LP-107, LP-200, LP-205, LP-401, LP-501-505
 
 ## References
 

@@ -447,6 +447,39 @@ def test_deltasoup_robustness():
     assert evaluate(soup) >= evaluate(good_deltas[0])
 ```
 
+## Reference Implementation
+
+**Repository**: [zooai/bitdelta](https://github.com/zooai/bitdelta)
+
+**Key Files**:
+- `/bitdelta/quantization.py` - 1-bit weight quantization implementation
+- `/bitdelta/deltasoup.py` - DeltaSoup aggregation with Byzantine robustness
+- `/bitdelta/model_swapping.py` - Fast user model switching (< 10ms)
+- `/storage/distributed_storage.py` - Distributed delta weight storage
+- `/aggregation/byzantine_defense.py` - Krum and trimmed mean aggregation
+- `/personalization/user_adapter.py` - Per-user model adaptation engine
+- `/benchmarks/memory_efficiency.py` - Memory usage benchmarking
+- `/benchmarks/safety_evaluation.py` - Jailbreak resistance testing
+- `/api/delta_api.ts` - API for delta weight management
+- `/sdk/python/` - Python SDK for BitDelta operations
+- `/tests/poisoning_tests.py` - Byzantine attack resistance tests
+- `/tests/quality_tests.py` - Model quality preservation tests
+- `/docs/technical_spec.md` - Detailed technical specification
+
+**Status**: In Development (Beta Q2 2025)
+
+**Performance Characteristics**:
+- Memory reduction: 10-20× vs. full weights
+- Model switching latency: < 10ms
+- Jailbreak resistance: ~60% improvement
+- Byzantine tolerance: Up to 30% poisoned deltas
+
+**Integration**:
+- ZIP-3 Eco-1 model personalization
+- ZIP-6 User-owned model NFTs
+- ZIP-8 Avatar tutor customization
+- ZIP-9 Unified architecture
+
 ## References
 
 1. [BitDelta: Your Fine-Tune May Only Be Worth One Bit](https://arxiv.org/abs/2402.10193)

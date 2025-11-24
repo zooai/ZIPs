@@ -845,6 +845,47 @@ def test_unified_bitdelta():
 4. [ZIP-4: Gaming Standards](./zip-4.md) - NPC evolution requirements
 5. [ZIP-1: HLLMs](./zip-1.md) - DeFi advisor specifications
 
+## Reference Implementation
+
+**Repository**: [zooai/bitdelta-unified](https://github.com/zooai/bitdelta-unified)
+
+**Key Files**:
+- `/core/unified_bitdelta.py` - Unified BitDelta implementation for all Zoo systems
+- `/core/quantization_engine.py` - 1-bit quantization engine
+- `/core/delta_aggregation.py` - DeltaSoup with Byzantine robustness
+- `/storage/delta_store.py` - Distributed delta weight storage
+- `/switching/fast_swap.py` - Sub-10ms model switching
+- `/personalization/user_adaptation.py` - Per-user/per-student adaptation
+- `/compression/codec.py` - Delta compression and decompression
+- `/safety/jailbreak_resistance.py` - Safety evaluation and hardening
+- `/migration/legacy_migration.py` - Migration from ZIP-7 implementations
+- `/api/unified_api.ts` - Unified API for all BitDelta operations
+- `/sdk/python/` - Python SDK for unified BitDelta
+- `/sdk/typescript/` - TypeScript SDK for web integration
+- `/benchmarks/unified_benchmarks.py` - Comprehensive performance benchmarks
+- `/tests/system_tests.py` - End-to-end system tests
+
+**Status**: In Development (Beta Q3 2025)
+
+**Related Repositories**:
+- Migration Tools: [zooai/bitdelta-migrate](https://github.com/zooai/bitdelta-migrate)
+- Benchmarking Suite: [zooai/bitdelta-bench](https://github.com/zooai/bitdelta-bench)
+- Safety Validators: [zooai/bitdelta-safety](https://github.com/zooai/bitdelta-safety)
+
+**Unified Features**:
+- Single codebase for all Zoo AI systems
+- Consistent API across ZIP-1, ZIP-3, ZIP-6, ZIP-8
+- Cross-system delta compatibility
+- Standardized safety and performance metrics
+
+**Integration Points**:
+- ZIP-1 HLLM personalization
+- ZIP-3 Eco-1 model adaptation
+- ZIP-6 Model NFT weight storage
+- ZIP-7 BitDelta core algorithms
+- ZIP-8 Avatar tutor customization
+- ZIP-10 Launch model deployment
+
 ## Implementation Resources
 
 - Reference implementation: https://github.com/zooai/bitdelta-unified

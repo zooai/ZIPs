@@ -770,6 +770,51 @@ interface ZooModelUI {
 5. [FlashAttention-3](https://arxiv.org/abs/2401.04577) - Efficient attention
 6. Knowledge distillation advances from recent literature
 
+## Reference Implementation
+
+**Repository**: [zooai/zoo-models](https://github.com/zooai/zoo-models)
+
+**Key Files**:
+- `/eco1/model.py` - Eco-1 z-JEPA implementation (16B/32B params)
+- `/eco1/training/` - Eco-1 training pipeline on behavioral data
+- `/eco1/inference/` - Optimized inference for video/audio/3D
+- `/coder1/model.py` - Coder-1 code generation model (7B/15B params)
+- `/coder1/training/` - Coder-1 training on code + execution traces
+- `/coder1/tools/` - Tool use integration (bash, git, file operations)
+- `/nano1/model.py` - Nano-1 efficient model (1.5B params)
+- `/nano1/quantization/` - INT4/INT8 quantization for edge devices
+- `/nano1/mobile/` - iOS/Android deployment
+- `/shared/bitdelta.py` - BitDelta personalization for all models
+- `/shared/moe_router.py` - MoE routing shared across models
+- `/deployment/serve.py` - Model serving infrastructure
+- `/deployment/scaling.py` - Auto-scaling for production
+- `/api/openai_compatible.py` - OpenAI-compatible API
+- `/tests/model_tests.py` - Comprehensive model evaluation suite
+
+**Status**: In Development (Launch Q2 2025)
+
+**Pre-trained Model Weights**:
+- Eco-1: https://huggingface.co/zoo-ai/eco-1-base (16B), eco-1-large (32B)
+- Coder-1: https://huggingface.co/zoo-ai/coder-1-base (7B), coder-1-large (15B)
+- Nano-1: https://huggingface.co/zoo-ai/nano-1 (1.5B)
+
+**Documentation**:
+- Model cards and usage: https://docs.zoo.ai/models
+- API reference: https://api.zoo.ai/docs
+- Training guides: https://docs.zoo.ai/training
+- Deployment guides: https://docs.zoo.ai/deployment
+
+**Integration**:
+- ZIP-3 Eco-1 architecture specification
+- ZIP-7 BitDelta personalization
+- ZIP-8 Avatar tutor models
+- ZIP-9 Unified BitDelta deployment
+
+**Benchmarks**:
+- Eco-1: Video QA, motion prediction, multimodal understanding
+- Coder-1: HumanEval, MBPP, code execution accuracy
+- Nano-1: MMLU, edge device latency, energy efficiency
+
 ## Implementation Resources
 
 - Model weights: https://huggingface.co/zoo-ai/

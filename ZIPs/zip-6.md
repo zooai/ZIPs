@@ -396,6 +396,39 @@ class NFTAICreator {
 - Zero-knowledge training proofs
 - Anti-gaming mechanisms for rewards
 
+## Reference Implementation
+
+**Repository**: [zooai/model-nfts](https://github.com/zooai/model-nfts)
+
+**Key Files**:
+- `/contracts/AIModelNFT.sol` - ERC-721 NFT for AI models
+- `/contracts/ModelMarketplace.sol` - Trading marketplace for AI model NFTs
+- `/contracts/TrainingRewards.sol` - Reward distribution for model training
+- `/storage/ipfs_storage.py` - Encrypted model storage on IPFS
+- `/training/model_evolution.py` - Track model evolution from Newborn to Master
+- `/ownership/transfer.sol` - Secure model ownership transfer
+- `/zkml/training_proofs.py` - Zero-knowledge proofs for training verification
+- `/api/model_api.ts` - API for model querying and management
+- `/sdk/typescript/` - SDK for integrating user-owned models
+- `/valuation/model_valuation.py` - Model value estimation algorithms
+- `/tests/ownership_tests.sol` - Ownership and transfer test suite
+- `/docs/user_guide.md` - Guide for model owners
+
+**Status**: In Development (Alpha Q2 2025)
+
+**NFT Metadata Schema**:
+- Model ID and version
+- Training operation count
+- Specialization domains
+- Performance metrics
+- Ownership history
+
+**Integration Points**:
+- ZIP-1 HLLM personalization
+- ZIP-3 Eco-1 model architecture
+- ZIP-7 BitDelta weight storage
+- LP-102 Immutable Training Ledger
+
 ## References
 
 1. [ZIP-1: HLLMs for Zoo](./zip-1.md)

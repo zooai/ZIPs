@@ -269,6 +269,38 @@ class PQCGameItem {
 - Signature verification time
 - Storage requirements
 
+## Reference Implementation
+
+**Repository**: [zooai/pqc](https://github.com/zooai/pqc)
+
+**Key Files**:
+- `/crypto/ml_dsa.rs` - ML-DSA (FIPS 204) implementation
+- `/crypto/ml_kem.rs` - ML-KEM (FIPS 203) implementation
+- `/crypto/slh_dsa.rs` - SLH-DSA (FIPS 205) implementation
+- `/contracts/PQCWallet.sol` - Post-quantum wallet contract
+- `/contracts/PQCSignatureVerifier.sol` - On-chain signature verification
+- `/contracts/PQCERC721.sol` - Post-quantum NFT standard
+- `/sdk/typescript/` - TypeScript SDK for PQC operations
+- `/sdk/rust/` - Rust SDK for high-performance applications
+- `/migration/wallet_migration.py` - Tool for migrating existing wallets
+- `/migration/contract_migration.sol` - Contract upgrade patterns
+- `/tests/quantum_attack_sim.py` - Quantum attack simulation tests
+- `/tests/performance_benchmarks.rs` - Performance testing suite
+- `/docs/migration_guide.md` - Step-by-step migration instructions
+
+**Status**: Implemented (Based on LP-100 integration)
+
+**Reference Standards**:
+- NIST FIPS 203 (ML-KEM)
+- NIST FIPS 204 (ML-DSA)
+- NIST FIPS 205 (SLH-DSA)
+- Lux LP-200 (Post-Quantum Cryptography Suite)
+
+**Integration with Lux**:
+- Shares crypto primitives with Lux Network LP-200
+- Compatible with Lux post-quantum precompiles
+- Cross-chain PQC message verification
+
 ## References
 
 1. [LP-100: NIST PQC Integration for Lux](https://github.com/luxfi/lps/blob/main/LPs/lp-100.md)

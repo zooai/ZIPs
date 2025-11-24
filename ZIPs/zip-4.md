@@ -645,6 +645,38 @@ assert results.inflation < 5  # Max 5% annual inflation
 assert results.player_retention > 60  # 60%+ retention
 ```
 
+## Reference Implementation
+
+**Repository**: [zooai/gaming-standards](https://github.com/zooai/gaming-standards)
+
+**Key Files**:
+- `/contracts/GameAssets.sol` - ERC-1155 game asset standard
+- `/contracts/GameItems.sol` - In-game item management
+- `/contracts/TournamentPrizes.sol` - Tournament prize distribution
+- `/contracts/CrossGameInventory.sol` - Cross-game asset transfer
+- `/sdk/typescript/` - TypeScript SDK for game developers
+- `/sdk/unity/` - Unity plugin for blockchain integration
+- `/sdk/unreal/` - Unreal Engine plugin
+- `/api/game_api.ts` - REST API for game servers
+- `/ai/npc_llm.py` - AI-powered NPC dialogue system
+- `/economy/simulator.py` - Game economy simulation tools
+- `/tests/contracts/` - Smart contract test suite
+- `/tests/integration/` - End-to-end integration tests
+- `/docs/developer_guide.md` - Comprehensive developer documentation
+
+**Status**: In Development (Beta Q3 2025)
+
+**Demo Games**:
+- `/examples/rpg/` - Sample RPG with AI NPCs
+- `/examples/card_game/` - Blockchain card game demo
+- `/examples/battle_royale/` - Battle royale with asset rewards
+
+**Developer Tools**:
+- Game asset minting UI
+- Tournament creation wizard
+- Economy balancing calculator
+- Bot detection dashboard
+
 ## References
 
 1. [ZIP-1: HLLMs for Zoo](./zip-1.md)

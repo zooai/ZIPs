@@ -271,6 +271,29 @@ Target Metrics:
   - Trust Restoration: Positive media coverage
 ```
 
+## Reference Implementation
+
+**Repository**: [zooai/genesis-airdrop](https://github.com/zooai/genesis-airdrop)
+
+**Key Files**:
+- `/contracts/ZooGenesisAirdrop.sol` - Main airdrop contract with merkle proof verification
+- `/contracts/VictimDAO.sol` - Enhanced governance for original victims
+- `/scripts/snapshot.py` - Ethereum snapshot generation at block 13528900
+- `/scripts/merkle_tree.py` - Merkle tree construction from snapshot data
+- `/web/recovery-portal/` - Web interface for claim verification and execution
+- `/api/eligibility.ts` - API for checking victim eligibility and allocations
+- `/data/snapshot.json` - Original holder snapshot data
+- `/data/merkle_root.txt` - Published merkle root for verification
+- `/tests/airdrop_test.sol` - Smart contract test suite
+- `/docs/claiming_guide.md` - Step-by-step claiming instructions
+
+**Status**: Implemented (Q1 2025 Deployment)
+
+**Live Services**:
+- Recovery Portal: `https://zoo.fund/recovery`
+- Eligibility Checker: `https://api.zoo.fund/v1/airdrop/check/{address}`
+- Claim History: `https://api.zoo.fund/v1/airdrop/claims`
+
 ## References
 
 1. [Original CryptoZoo Announcement](https://twitter.com/LoganPaul/status/...)

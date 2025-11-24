@@ -467,6 +467,30 @@ Deflationary Pressure:
 - Advanced tokenomics
 - Sustainable economy
 
+## Reference Implementation
+
+**Repository**: [zooai/hllm](https://github.com/zooai/hllm)
+
+**Key Files**:
+- `/models/hllm.py` - Hamiltonian LLM core implementation
+- `/tokenomics/zoo_token.sol` - ZOO token smart contract
+- `/training/user_personalization.py` - Per-user model training
+- `/api/hllm_api.py` - API server for model inference
+- `/sdk/typescript/` - TypeScript SDK implementation
+- `/contracts/AITrainingRewards.sol` - Training rewards contract
+- `/contracts/GameRewards.sol` - Gaming rewards contract
+- `/contracts/NFTEconomy.sol` - NFT economy contract
+- `/contracts/ZOOGovernance.sol` - Governance contract
+- `/tests/` - Comprehensive test suite
+
+**Status**: In Development
+
+**Integration Examples**:
+- DeFi strategy optimization demos in `/examples/defi/`
+- NFT generation integration in `/examples/nft/`
+- Gaming AI companions in `/examples/gaming/`
+- Governance proposal analysis in `/examples/governance/`
+
 ## Security Considerations
 
 ### Model Security
