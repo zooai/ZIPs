@@ -1,7 +1,15 @@
-# ZIP-042: Cross-Ecosystem Interoperability Standard
+---
+zip: 42
+title: Cross-Ecosystem Interoperability Standard
+description: Unified standard for interoperability between Zoo, Lux, and Hanzo ecosystems
+author: Zoo Protocol Foundation
+type: Standards Track
+category: Core
+status: Draft
+created: 2025-01-15
+---
 
-## Status
-**Research Phase**
+# ZIP-042: Cross-Ecosystem Interoperability Standard
 
 ## Abstract
 ZIP-042 establishes a unified standard for interoperability between Zoo, Lux, and Hanzo ecosystems, enabling seamless value transfer, data exchange, and service integration across all three platforms.
