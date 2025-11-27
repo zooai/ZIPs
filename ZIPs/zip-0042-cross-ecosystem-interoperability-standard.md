@@ -1,5 +1,5 @@
 ---
-zip: 42
+zip: 0042
 title: Cross-Ecosystem Interoperability Standard
 description: Unified standard for interoperability between Zoo, Lux, and Hanzo ecosystems
 author: Zoo Protocol Foundation

@@ -1,5 +1,5 @@
 ---
-zip: 14
+zip: 0014
 title: Zoo KMS Integration via Lux KMS
 author: Zoo Labs Foundation
 type: Infrastructure

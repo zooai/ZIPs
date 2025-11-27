@@ -1,5 +1,5 @@
 ---
-zip: 005
+zip: 0005
 title: Post-Quantum Security for DeFi & NFTs
 author: Zoo Team
 type: Standards Track

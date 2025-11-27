@@ -1,5 +1,5 @@
 ---
-zip: 011
+zip: 0011
 title: Spatial Web, Active Inference, and Agent-to-Agent Economies for Zoo AI
 author: Zoo Labs Foundation
 type: Standards Track

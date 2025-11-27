@@ -1,5 +1,5 @@
 ---
-zip: 013
+zip: 0013
 title: LP Standards Conformance and Chain Interoperability
 author: Zoo Labs Foundation
 type: Standards Track

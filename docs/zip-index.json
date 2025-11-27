@@ -3,7 +3,7 @@
   "zips": [
     {
       "number": 0,
-      "file": "zip-000-zoo-ecosystem-architecture-framework.md",
+      "file": "zip-0000-zoo-ecosystem-architecture-framework.md",
       "title": "Zoo Ecosystem Architecture & Framework",
       "description": "",
       "author": "Zoo Team",
@@ -14,7 +14,7 @@
     },
     {
       "number": 1,
-      "file": "zip-001-hamiltonian-large-language-models-for-zoo.md",
+      "file": "zip-0001-hamiltonian-large-language-models-for-zoo.md",
       "title": "Hamiltonian Large Language Models (HLLMs) for Zoo",
       "description": "",
       "author": "Zoo Team",
@@ -25,7 +25,7 @@
     },
     {
       "number": 2,
-      "file": "zip-002-genesis-airdrop-to-original-zoo-token-victims.md",
+      "file": "zip-0002-genesis-airdrop-to-original-zoo-token-victims.md",
       "title": "Genesis Airdrop to Original ZOO Token Victims",
       "description": "",
       "author": "Zoo Team",
@@ -36,7 +36,7 @@
     },
     {
       "number": 3,
-      "file": "zip-003-eco-1-z-jepa-hyper-modal-moe-accelerated-active-inference-aligned-architecture.md",
+      "file": "zip-0003-eco-1-z-jepa-hyper-modal-moe-accelerated-active-inference-aligned-architecture.md",
       "title": "Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-Inference Aligned Architecture",
       "description": "",
       "author": "Zoo Research Group, Z, Collaborators - Zoo Labs Foundation Inc. (Delaware 501(c)(3))",
@@ -47,7 +47,7 @@
     },
     {
       "number": 4,
-      "file": "zip-004-gaming-standards-for-zoo-ecosystem.md",
+      "file": "zip-0004-gaming-standards-for-zoo-ecosystem.md",
       "title": "Gaming Standards for Zoo Ecosystem",
       "description": "",
       "author": "Zoo Team",
@@ -58,7 +58,7 @@
     },
     {
       "number": 5,
-      "file": "zip-005-post-quantum-security-for-defi-nfts.md",
+      "file": "zip-0005-post-quantum-security-for-defi-nfts.md",
       "title": "Post-Quantum Security for DeFi & NFTs",
       "description": "",
       "author": "Zoo Team",
@@ -69,7 +69,7 @@
     },
     {
       "number": 6,
-      "file": "zip-006-user-owned-ai-models-on-zoo-nft-based-model-ownership.md",
+      "file": "zip-0006-user-owned-ai-models-on-zoo-nft-based-model-ownership.md",
       "title": "User-Owned AI Models on Zoo - NFT-Based Model Ownership",
       "description": "",
       "author": "Zoo Team",
@@ -80,7 +80,7 @@
     },
     {
       "number": 7,
-      "file": "zip-007-bitdelta-deltasoup-personalized-and-community-ai.md",
+      "file": "zip-0007-bitdelta-deltasoup-personalized-and-community-ai.md",
       "title": "BitDelta + DeltaSoup - Personalized and Community AI",
       "description": "",
       "author": "Zoo Labs Foundation",
@@ -91,7 +91,7 @@
     },
     {
       "number": 8,
-      "file": "zip-008-specialized-avatar-tutors-for-personalized-learning-with-prerequisite-scaffolding.md",
+      "file": "zip-0008-specialized-avatar-tutors-for-personalized-learning-with-prerequisite-scaffolding.md",
       "title": "Specialized Avatar Tutors for Personalized Learning with Prerequisite Scaffolding",
       "description": "",
       "author": "Zoo Labs Foundation (Antje Worring, Zach Kelling, Keisuke Shingu)",
@@ -102,7 +102,7 @@
     },
     {
       "number": 9,
-      "file": "zip-009-unified-bitdelta-architecture-for-all-zoo-ai-systems.md",
+      "file": "zip-0009-unified-bitdelta-architecture-for-all-zoo-ai-systems.md",
       "title": "Unified BitDelta Architecture for All Zoo AI Systems",
       "description": "",
       "author": "Zoo Labs Foundation",
@@ -113,7 +113,7 @@
     },
     {
       "number": 10,
-      "file": "zip-010-zoo-launch-models-eco-1-coder-1-and-nano-1.md",
+      "file": "zip-0010-zoo-launch-models-eco-1-coder-1-and-nano-1.md",
       "title": "Zoo Launch Models - Eco-1, Coder-1, and Nano-1",
       "description": "",
       "author": "Zoo Labs Foundation",
@@ -124,7 +124,7 @@
     },
     {
       "number": 11,
-      "file": "zip-011-spatial-web-active-inference-and-agent-to-agent-economies-for-zoo-ai.md",
+      "file": "zip-0011-spatial-web-active-inference-and-agent-to-agent-economies-for-zoo-ai.md",
       "title": "Spatial Web, Active Inference, and Agent-to-Agent Economies for Zoo AI",
       "description": "",
       "author": "Zoo Labs Foundation",
@@ -135,7 +135,7 @@
     },
     {
       "number": 12,
-      "file": "zip-012-lp-integration-chain-agnostic-ai-standards.md",
+      "file": "zip-0012-lp-integration-chain-agnostic-ai-standards.md",
       "title": "LP (Lux Proposals) Integration - Chain-Agnostic AI Standards",
       "description": "",
       "author": "Zoo Labs Foundation",
@@ -146,7 +146,7 @@
     },
     {
       "number": 13,
-      "file": "zip-013-lp-standards-conformance-and-chain-interoperability.md",
+      "file": "zip-0013-lp-standards-conformance-and-chain-interoperability.md",
       "title": "LP Standards Conformance and Chain Interoperability",
       "description": "",
       "author": "Zoo Labs Foundation",
@@ -157,7 +157,7 @@
     },
     {
       "number": 14,
-      "file": "zip-014-zoo-kms-integration-via-lux-kms.md",
+      "file": "zip-0014-zoo-kms-integration-via-lux-kms.md",
       "title": "Zoo KMS Integration via Lux KMS",
       "description": "",
       "author": "Zoo Labs Foundation",
@@ -168,7 +168,7 @@
     },
     {
       "number": 42,
-      "file": "zip-042-cross-ecosystem-interoperability-standard.md",
+      "file": "zip-0042-cross-ecosystem-interoperability-standard.md",
       "title": "Cross-Ecosystem Interoperability Standard",
       "description": "Unified standard for interoperability between Zoo, Lux, and Hanzo ecosystems",
       "author": "Zoo Protocol Foundation",

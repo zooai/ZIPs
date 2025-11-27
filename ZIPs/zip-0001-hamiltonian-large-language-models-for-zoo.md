@@ -1,5 +1,5 @@
 ---
-zip: 001
+zip: 0001
 title: Hamiltonian Large Language Models (HLLMs) for Zoo
 author: Zoo Team
 type: Standards Track

@@ -1,5 +1,5 @@
 ---
-zip: 007
+zip: 0007
 title: BitDelta + DeltaSoup - Personalized and Community AI
 author: Zoo Labs Foundation
 type: Standards Track
