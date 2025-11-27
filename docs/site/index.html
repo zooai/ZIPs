@@ -231,108 +231,17 @@
     <script>
       let allProposals = [];
 
-      // Fetch and parse ZIPs
+      // Fetch and parse ZIPs from generated JSON index
       async function loadProposals() {
         try {
-          // For now, we'll create a static list of known ZIPs
-          // In production, this would fetch from a generated JSON file
-          allProposals = [
-            {
-              number: 1,
-              title: "Zoo AI Ecosystem Genesis",
-              description: "Foundational framework for the Zoo AI ecosystem governance",
-              status: "Final",
-              type: "Meta",
-              author: "Zoo Foundation",
-              created: "2024-09-01"
-            },
-            {
-              number: 2,
-              title: "Sub-DAO Sovereignty Model",
-              description: "Framework for creating and managing autonomous sub-DAOs",
-              status: "Final",
-              type: "Standards Track",
-              author: "Zoo Governance Team",
-              created: "2024-09-05"
-            },
-            {
-              number: 3,
-              title: "User-Owned AI Models as NFTs",
-              description: "Standard for tokenizing and trading AI models as NFT assets",
-              status: "Review",
-              type: "Standards Track",
-              author: "AI Team",
-              created: "2024-09-07"
-            },
-            {
-              number: 4,
-              title: "z-JEPA Architecture Specification",
-              description: "Hyper-modal AI architecture for Zoo ecosystem",
-              status: "Draft",
-              type: "Standards Track",
-              author: "Research Team",
-              created: "2024-09-08"
-            },
-            {
-              number: 5,
-              title: "Genesis Airdrop Framework",
-              description: "Distribution mechanism for original ZOO token holders",
-              status: "Final",
-              type: "Meta",
-              author: "Community Team",
-              created: "2024-09-10"
-            },
-            {
-              number: 6,
-              title: "Post-Quantum Security for DeFi & NFTs",
-              description: "Quantum-resistant cryptography implementation standards",
-              status: "Review",
-              type: "Standards Track",
-              author: "Security Team",
-              created: "2024-09-11"
-            },
-            {
-              number: 7,
-              title: "Mountain Goat Preserve Initiative",
-              description: "Conservation and environmental impact framework",
-              status: "Final",
-              type: "Informational",
-              author: "Conservation Team",
-              created: "2024-09-12"
-            },
-            {
-              number: 8,
-              title: "Legal Framework & 501(c)(3) Structure",
-              description: "Non-profit organization structure and compliance",
-              status: "Final",
-              type: "Meta",
-              author: "Legal Team",
-              created: "2024-09-13"
-            },
-            {
-              number: 9,
-              title: "Zoo AI Agent Framework",
-              description: "Standards for AI agents and tools integration",
-              status: "Draft",
-              type: "Standards Track",
-              author: "Tools Team",
-              created: "2024-09-14"
-            },
-            {
-              number: 10,
-              title: "Wander Platform Integration",
-              description: "Volunteering platform standards and protocols",
-              status: "Review",
-              type: "Standards Track",
-              author: "Platform Team",
-              created: "2024-09-15"
-            }
-          ];
-
+          const response = await fetch('zip-index.json');
+          if (!response.ok) throw new Error('Failed to load ZIP index');
+          const data = await response.json();
+          allProposals = data.zips;
           renderProposals(allProposals);
           updateStats();
         } catch (error) {
-          document.querySelector('.loading').innerHTML = 
+          document.querySelector('.loading').innerHTML =
             '<div class="error">Error loading proposals: ' + error.message + '</div>';
         }
       }
@@ -346,13 +255,13 @@
         }
 
         container.innerHTML = proposals.map(p => `
-          <div class="proposal-card" onclick="window.open('https://github.com/zooai/ZIPs/blob/main/ZIPs/zip-${p.number}.md', '_blank')">
+          <div class="proposal-card" onclick="window.open('https://github.com/zooai/ZIPs/blob/main/ZIPs/${p.file}', '_blank')">
             <div class="proposal-header">
-              <span class="proposal-number">ZIP-${p.number}</span>
+              <span class="proposal-number">ZIP-${String(p.number).padStart(3, '0')}</span>
               <span class="proposal-status status-${p.status.toLowerCase().replace(' ', '-')}">${p.status}</span>
             </div>
             <h3 class="proposal-title">${p.title}</h3>
-            <p class="proposal-description">${p.description}</p>
+            <p class="proposal-description">${p.description || ''}</p>
             <div class="proposal-meta">
               <span class="meta-item">
                 <span class="tag">${p.type}</span>
