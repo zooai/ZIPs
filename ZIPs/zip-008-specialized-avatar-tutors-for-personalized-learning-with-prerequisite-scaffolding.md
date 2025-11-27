@@ -1,5 +1,5 @@
 ---
-zip: 8
+zip: 008
 title: Specialized Avatar Tutors for Personalized Learning with Prerequisite Scaffolding
 author: Zoo Labs Foundation (Antje Worring, Zach Kelling, Keisuke Shingu)
 type: Standards Track

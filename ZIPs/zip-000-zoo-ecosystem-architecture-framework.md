@@ -1,5 +1,5 @@
 ---
-zip: 0
+zip: 000
 title: Zoo Ecosystem Architecture & Framework
 author: Zoo Team
 type: Meta

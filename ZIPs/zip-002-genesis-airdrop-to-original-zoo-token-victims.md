@@ -1,5 +1,5 @@
 ---
-zip: 2
+zip: 002
 title: Genesis Airdrop to Original ZOO Token Victims
 author: Zoo Team
 type: Standards Track

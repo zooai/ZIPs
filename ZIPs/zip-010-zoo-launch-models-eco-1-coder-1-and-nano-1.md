@@ -1,5 +1,5 @@
 ---
-zip: 10
+zip: 010
 title: Zoo Launch Models - Eco-1, Coder-1, and Nano-1
 author: Zoo Labs Foundation
 type: Standards Track

@@ -1,5 +1,5 @@
 ---
-zip: 3
+zip: 003
 title: "Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-Inference Aligned Architecture"
 author: Zoo Research Group, Z, Collaborators - Zoo Labs Foundation Inc. (Delaware 501(c)(3))
 type: Standards Track

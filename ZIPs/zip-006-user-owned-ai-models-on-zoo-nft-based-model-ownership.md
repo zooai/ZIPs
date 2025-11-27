@@ -1,5 +1,5 @@
 ---
-zip: 6
+zip: 006
 title: User-Owned AI Models on Zoo - NFT-Based Model Ownership
 author: Zoo Team
 type: Standards Track

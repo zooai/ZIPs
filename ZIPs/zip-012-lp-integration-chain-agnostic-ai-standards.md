@@ -1,5 +1,5 @@
 ---
-zip: 12
+zip: 012
 title: LP (Lux Proposals) Integration - Chain-Agnostic AI Standards
 author: Zoo Labs Foundation
 type: Standards Track

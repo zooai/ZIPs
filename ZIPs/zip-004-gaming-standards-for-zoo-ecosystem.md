@@ -1,5 +1,5 @@
 ---
-zip: 4
+zip: 004
 title: Gaming Standards for Zoo Ecosystem
 author: Zoo Team
 type: Standards Track
