@@ -42,21 +42,24 @@ Zoo Labs Foundation publishes academic and technical papers documenting the rese
 
 ## ZIP Index
 
-### Core Protocol Specifications
-
-| Number | Title | Type | Status | Links |
-|:-------|:------|:-----|:-------|:------|
-| [ZIP-000](./ZIP-000-zips.md) | ZIP Process and Guidelines | Meta | Active | [View](./ZIP-000-zips.md) |
-| [ZIP-001](./ZIP-001-dso.md) | Decentralized Semantic Optimization | Standards Track | Published | [Paper](https://github.com/zooai/papers/blob/main/zoo-dso.pdf) |
-| [ZIP-002](./ZIP-002-poai.md) | Proof of AI Consensus | Standards Track | Active | [View](./ZIP-002-poai.md) |
-| [ZIP-003](./ZIP-003-genesis.md) | Genesis Paper (October 2021) | Historical | Final | [Whitepaper](https://github.com/zooai/papers/blob/main/zoo-genesis-whitepaper.md) |
-
-### Economics & Governance
-
-| Number | Title | Type | Status | Links |
-|:-------|:------|:-----|:-------|:------|
-| [GYM Tokenomics](./zip-gym-tokenomics.md) | GYM Token Economics and Integration | Standards Track | Active | [View](./zip-gym-tokenomics.md) |
-| [GYM Protocol](./zip-gym-protocol.md) | GYM Training Network Protocol | Standards Track | Draft | [View](./zip-gym-protocol.md) |
+| Number | Title | Type | Status |
+|:-------|:------|:-----|:-------|
+| [ZIP-0000](./ZIPs/zip-0000-zoo-ecosystem-architecture-framework.md) | Zoo Ecosystem Architecture & Framework | Meta | Final |
+| [ZIP-0001](./ZIPs/zip-0001-hamiltonian-large-language-models-for-zoo.md) | Hamiltonian Large Language Models (HLLMs) for Zoo | Standards Track | Draft |
+| [ZIP-0002](./ZIPs/zip-0002-genesis-airdrop-to-original-zoo-token-victims.md) | Genesis Airdrop to Original ZOO Token Victims | Standards Track | Final |
+| [ZIP-0003](./ZIPs/zip-0003-eco-1-z-jepa-hyper-modal-moe-accelerated-active-inference-aligned-architecture.md) | Eco-1: z-JEPA - A Hyper-Modal, MoE-Accelerated, Active-In... | Standards Track | Draft |
+| [ZIP-0004](./ZIPs/zip-0004-gaming-standards-for-zoo-ecosystem.md) | Gaming Standards for Zoo Ecosystem | Standards Track | Draft |
+| [ZIP-0005](./ZIPs/zip-0005-post-quantum-security-for-defi-nfts.md) | Post-Quantum Security for DeFi & NFTs | Standards Track | Final |
+| [ZIP-0006](./ZIPs/zip-0006-user-owned-ai-models-on-zoo-nft-based-model-ownership.md) | User-Owned AI Models on Zoo - NFT-Based Model Ownership | Standards Track | Draft |
+| [ZIP-0007](./ZIPs/zip-0007-bitdelta-deltasoup-personalized-and-community-ai.md) | BitDelta + DeltaSoup - Personalized and Community AI | Standards Track | Draft |
+| [ZIP-0008](./ZIPs/zip-0008-specialized-avatar-tutors-for-personalized-learning-with-prerequisite-scaffolding.md) | Specialized Avatar Tutors for Personalized Learning with ... | Standards Track | Draft |
+| [ZIP-0009](./ZIPs/zip-0009-unified-bitdelta-architecture-for-all-zoo-ai-systems.md) | Unified BitDelta Architecture for All Zoo AI Systems | Standards Track | Draft |
+| [ZIP-0010](./ZIPs/zip-0010-zoo-launch-models-eco-1-coder-1-and-nano-1.md) | Zoo Launch Models - Eco-1, Coder-1, and Nano-1 | Standards Track | Draft |
+| [ZIP-0011](./ZIPs/zip-0011-spatial-web-active-inference-and-agent-to-agent-economies-for-zoo-ai.md) | Spatial Web, Active Inference, and Agent-to-Agent Economi... | Standards Track | Draft |
+| [ZIP-0012](./ZIPs/zip-0012-lp-integration-chain-agnostic-ai-standards.md) | LP (Lux Proposals) Integration - Chain-Agnostic AI Standards | Standards Track | Draft |
+| [ZIP-0013](./ZIPs/zip-0013-lp-standards-conformance-and-chain-interoperability.md) | LP Standards Conformance and Chain Interoperability | Standards Track | Final |
+| [ZIP-0014](./ZIPs/zip-0014-zoo-kms-integration-via-lux-kms.md) | Zoo KMS Integration via Lux KMS | Infrastructure | Active |
+| [ZIP-0042](./ZIPs/zip-0042-cross-ecosystem-interoperability-standard.md) | Cross-Ecosystem Interoperability Standard | Standards Track | Draft |
 
 ## ZIP Process
 
