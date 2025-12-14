@@ -198,7 +198,129 @@ interface IZooMiningGovernance {
 | `treasuryRate` | Research treasury contribution | 2% |
 | `minStakeBoost` | Minimum ZOO stake for boost | 1000 ZOO |
 
-### 5. Teleport Receiver
+### 5. NVTrust Chain-Binding (Double-Spend Prevention)
+
+Zoo integrates with the NVTrust chain-binding mechanism to prevent AI work from being claimed on multiple chains.
+
+#### Design Principle
+
+We avoid double-spend by **binding each unit of AI work to Zoo's chain ID (200200) BEFORE the compute runs**, and having the GPU's NVTrust enclave sign an attested receipt including that chain ID.
+
+#### Work Context for Zoo Mining
+
+```solidity
+/// Zoo-specific work context for AI mining
+struct WorkContext {
+    uint32 chainId;        // 200200 (Zoo EVM)
+    bytes32 jobId;         // Workload identifier
+    bytes32 modelHash;     // Model identity
+    bytes32 inputHash;     // Prompt/data identity
+    bytes32 deviceId;      // GPU hardware ID
+    bytes32 nonce;         // Unique per job
+    uint64 timestamp;      // Unix timestamp
+}
+
+/// Attested receipt from NVTrust enclave
+struct AttestedReceipt {
+    WorkContext context;
+    bytes32 resultHash;    // Hash of AI output
+    uint64 flops;          // Compute units
+    uint64 tokensProcessed;// LLM tokens
+    bytes nvtrustSignature;// NVIDIA hardware attestation
+}
+```
+
+#### Zoo Receipt Verification
+
+```solidity
+interface IZooMiningVerifier {
+    /// @notice Verify NVTrust attested receipt and mint reward
+    /// @dev Prevents double-spend via spent key check
+    function verifyAndMint(
+        AttestedReceipt calldata receipt
+    ) external returns (uint256 reward);
+
+    /// @notice Check if work has already been minted
+    /// @dev Key = keccak256(deviceId || nonce || chainId)
+    function isSpent(bytes32 spentKey) external view returns (bool);
+
+    /// @notice Verify NVTrust signature against NVIDIA root
+    function verifyNVTrust(
+        bytes calldata receipt,
+        bytes calldata signature
+    ) external view returns (bool);
+}
+```
+
+#### Spent Set (Double-Spend Prevention)
+
+```solidity
+contract ZooMiningVerifier is IZooMiningVerifier {
+    // Spent set: keccak256(deviceId || nonce || chainId) => minted
+    mapping(bytes32 => bool) private _spentSet;
+
+    uint32 constant ZOO_CHAIN_ID = 200200;
+
+    function verifyAndMint(
+        AttestedReceipt calldata receipt
+    ) external override returns (uint256 reward) {
+        // 1. Verify NVTrust signature
+        require(verifyNVTrust(
+            abi.encode(receipt),
+            receipt.nvtrustSignature
+        ), "Invalid attestation");
+
+        // 2. Verify chain_id is Zoo (200200)
+        require(
+            receipt.context.chainId == ZOO_CHAIN_ID,
+            "Wrong chain: expected Zoo (200200)"
+        );
+
+        // 3. Compute unique spent key
+        bytes32 spentKey = keccak256(abi.encodePacked(
+            receipt.context.deviceId,
+            receipt.context.nonce,
+            receipt.context.chainId
+        ));
+
+        // 4. Check spent set (DOUBLE-SPEND PREVENTION)
+        require(!_spentSet[spentKey], "Already minted");
+
+        // 5. Mark as spent and calculate reward
+        _spentSet[spentKey] = true;
+        reward = calculateReward(receipt.flops, receipt.tokensProcessed);
+
+        // 6. Mint AI tokens to miner
+        aiToken.mint(msg.sender, reward);
+
+        emit WorkMinted(
+            receipt.context.deviceId,
+            receipt.context.jobId,
+            reward
+        );
+    }
+}
+```
+
+#### Multi-Chain Mining Protection
+
+The same GPU can mine for Zoo, Hanzo, and Lux, but:
+- Zoo only accepts receipts with `chainId == 200200`
+- Each chain maintains its own spent set
+- Same `(deviceId, nonce)` pair can exist on multiple chains with different `chainId`
+
+| GPU | Zoo Receipt | Hanzo Receipt | Lux Receipt |
+|-----|-------------|---------------|-------------|
+| H100-001 | chainId: 200200 | chainId: 36963 | chainId: 96369 |
+| H100-001 | Valid on Zoo | Invalid on Zoo | Invalid on Zoo |
+
+**Key Invariant:** A receipt with `chainId: 36963` (Hanzo) cannot be minted on Zoo (200200) - the chain ID check rejects it before the spent set is even consulted.
+
+**Reference Implementation:**
+- [`lux/ai/pkg/attestation/nvtrust.go`](https://github.com/luxfi/ai/blob/main/pkg/attestation/nvtrust.go)
+- [`shinkai/hanzo-node/hanzo-libs/hanzo-mining/src/ledger.rs`](https://github.com/hanzoai/node/blob/main/hanzo-libs/hanzo-mining/src/ledger.rs)
+
+### 6. Teleport Receiver
 
 Zoo EVM receives teleported AI via the precompile:
 
